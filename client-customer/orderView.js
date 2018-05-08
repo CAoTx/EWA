@@ -1,18 +1,33 @@
-
-var cars = ["Saab", "Volvo", "BMW"];
+var cart = document.getElementById("shopping_cart");
 
 
 function addPzza(pizzanr) {
 
-	
-    if(document.getElementById("shopping_cart").innerHTML.localeCompare("<option>Warenkorb</option>") == 0) {
+	console.log(document.getElementById("shopping_cart").innerHTML);
 
-    	document.getElementById("shopping_cart").innerHTML = "<option>" + getName(pizzanr).value + " " + getPrice(pizzanr).value + "</option>";
+    if(cart.innerHTML.localeCompare("<option>Warenkorb</option>") == 0) {
+
+    	cart.innerHTML = "<option>" + getName(pizzanr).value + " " + getPrice(pizzanr).value + "</option>";
 
     }
     else {
-    	document.getElementById("shopping_cart").innerHTML = document.getElementById("shopping_cart").innerHTML + "<option>" + getName(pizzanr).value + " " + getPrice(pizzanr).value + "</option>";
+    	cart.innerHTML = document.getElementById("shopping_cart").innerHTML + "<option>" + getName(pizzanr).value + " " + getPrice(pizzanr).value + "</option>";
     }
     
-    console.log("" + cars[1]);
+}
+
+
+function removePizza(pizzanr) {
+
+	document.getElementById("shopping_cart").innerHTML = document.getElementById("shopping_cart").innerHTML.replace("<option>" + getName(pizzanr).value + " " + getPrice(pizzanr).value + "</option>", "") ;
+	
+	if(document.getElementById("shopping_cart").innerHTML.localeCompare("") == 0) {
+		document.getElementById("shopping_cart").innerHTML = "<option>Warenkorb</option>";
+	}
+}
+
+function createSpeisekarte() {
+
+	document.getElementById("shopping_cart").innerHTML;
+
 }

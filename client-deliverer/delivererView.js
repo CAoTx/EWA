@@ -2,7 +2,7 @@
 
 window.addEventListener('load', function () {
     createOrders();
-    alterOrder(0, 1);
+    alterOrder(2, 1);
 });
 
 function _getPrice(idx) {
