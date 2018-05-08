@@ -10,36 +10,22 @@
 
 <body style="background-color: lightgray">
   <h1 style="color:blueviolet">Deliverer</h1>
-  <section id="mainContent">
+  <section id="mainContent" style = "display: inline;">
 
 
+<!--    <article class="order" style = "display: inline-block;  width: 300px;">     
+      
+        <p id="adresse">Adresse:</p>
+        <p id="pizza">Pizza:</p>
+        <p id="price">Price:</p>
 
-    <article class="order">      
-        <h3 id="adresse1">Adresse:</h3>
-        <p id="pizza1">Pizza:</p>
-        <p id="price1">Price:</p>
-      <form class="order" action="http://www.fbi.h-da.de/cgi-bin/Echo.pl" method="POST">
 
-        <table>
-
-          <tr>
-            <td>
-              <label> Ready
-                <input type="radio" name="Order1" value="0" onclick="createOrders()">
-              </label>
-            </td>
-            <td>
-              <input type="radio" name="Order1" value="1" checked onclick="alterOrder(0, 1)">
-            </td>
-            <td>
-              <input type="radio" name="Order1" value="2">
-              <!-- onclick="this.form.submit()" -->
-            </td>
-          </tr>
-        </table>
-      </form>
+        <input type="radio" data-pid="testString" name="Order1" value="0" onclick="setStatus(data-pid, 3)">
+        <input type="radio" name="Order1" value="1" checked onclick="setStatus(data-pid, 4)">
+        <input type="radio" name="Order1" value="2" onclick="setStatus(data-pid, 5)">
     </article>
-
+    
+-->
   </section>
 </body>
 

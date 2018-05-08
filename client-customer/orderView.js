@@ -28,6 +28,52 @@ function removePizza(pizzanr) {
 
 function createSpeisekarte() {
 
-	cart.innerHTML;
+	for(var i = 0; i < PizzaNames.length; i++) {
+		
+		var e_id = "pizza" + i;
 
+		var tr = document.createElement("div");
+		var tdimg = document.createElement("span");
+		var a = document.createElement("a");
+		a.setAttribute('href', "#");
+		a.setAttribute('id', getName(i));
+		var img = document.createElement("img");
+		img.setAttribute('src', "../assets/pizza.png");
+		img.setAttribute('width', "130");
+		img.setAttribute('height', "130");
+		img.setAttribute('alt', "Magherita Pizza");
+		img.setAttribute('onclick', "addPzza(" + i + ")");
+		var tdpizza = document.createElement("span");
+		var spanpizza = document.createElement("span");
+		spanpizza.setAttribute('class', "name");
+		spanpizza.innerHTML = "" + getName(i).value;
+		var tdprice = document.createElement("span");
+		var spanprice = document.createElement("span");
+		
+		var pricestr = "" + getPrice(i).value;
+		
+		if(pricestr.includes(".")) {
+			//"6.9"
+			if(pricestr.lastIndexOf(".") == pricestr.length - 2) pricestr += "0";
+		}
+		else {
+			pricestr += ".00";
+		}
+		pricestr += " €";
+
+		spanprice.innerHTML = pricestr;
+
+		tr.appendChild(tdimg);
+		tdimg.appendChild(a);
+		a.appendChild(img);
+		tr.appendChild(tdpizza);
+		tdpizza.appendChild(spanpizza);
+		tr.appendChild(tdprice);
+		tdprice.appendChild(spanprice);
+
+		document.getElementById("speisekarte").appendChild(tr);
+
+	}
 }
+
+createSpeisekarte();
