@@ -56,10 +56,16 @@ var Orders = [
 
 
 function getPrice(Pid) {
+    if (Pid < 0){
+        return 0;
+    }
     return PizzaPrices[Pid];
 }
 
 function getName(Pid) {
+    if (Pid < 0){
+        return "";
+    }
     return PizzaNames[Pid];
 }
 
