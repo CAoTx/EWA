@@ -3,7 +3,7 @@ var cart = document.getElementById("shopping_cart");
 
 function addPzza(pizzanr) {
 
-	console.log(document.getElementById("shopping_cart").innerHTML);
+	console.log(cart.innerHTML);
 
     if(cart.innerHTML.localeCompare("<option>Warenkorb</option>") == 0) {
 
@@ -11,7 +11,7 @@ function addPzza(pizzanr) {
 
     }
     else {
-    	cart.innerHTML = document.getElementById("shopping_cart").innerHTML + "<option>" + getName(pizzanr).value + " " + getPrice(pizzanr).value + "</option>";
+    	cart.innerHTML = cart.innerHTML + "<option>" + getName(pizzanr).value + " " + getPrice(pizzanr).value + "</option>";
     }
     
 }
@@ -19,15 +19,15 @@ function addPzza(pizzanr) {
 
 function removePizza(pizzanr) {
 
-	document.getElementById("shopping_cart").innerHTML = document.getElementById("shopping_cart").innerHTML.replace("<option>" + getName(pizzanr).value + " " + getPrice(pizzanr).value + "</option>", "") ;
+	cart.innerHTML = cart.innerHTML.replace("<option>" + getName(pizzanr).value + " " + getPrice(pizzanr).value + "</option>", "") ;
 	
-	if(document.getElementById("shopping_cart").innerHTML.localeCompare("") == 0) {
-		document.getElementById("shopping_cart").innerHTML = "<option>Warenkorb</option>";
+	if(cart.innerHTML.localeCompare("") == 0) {
+		cart.innerHTML = "<option>Warenkorb</option>";
 	}
 }
 
 function createSpeisekarte() {
 
-	document.getElementById("shopping_cart").innerHTML;
+	cart.innerHTML;
 
 }

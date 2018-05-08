@@ -30,7 +30,7 @@ function alterOrder(idx, stat) {
  
     for (var i = 0; i < data.length; i++) {
         if (data[i].key == idx){
-            Orders[i].status = 3;
+            Orders[i].status = stat;
         }
     }
 
@@ -39,3 +39,21 @@ function alterOrder(idx, stat) {
      }
  
  }
+
+
+
+for(var x = 0; x < 4; x++) {
+    
+    var html = document.getElementById("mainContent").innerHTML;
+
+
+    if(Orders[x] != null) {
+        var m_id = "mainConent" + (x + 1);
+        document.getElementById(m_id). = 
+
+    }
+    
+
+
+
+}
