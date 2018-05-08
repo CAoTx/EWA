@@ -52,5 +52,5 @@ function getPrice(index) {
 }
 
 function getName(index){
-    return PizzaPrices[index];
+    return PizzaNames[index];
 }

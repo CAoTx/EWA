@@ -1,9 +1,18 @@
 
 var cars = ["Saab", "Volvo", "BMW"];
 
-var cart = document.getElementById("shopping_cart");
 
-function addPzza() {
-    document.getElementById("shopping_cart").innerHTML = document.getElementById("shopping_cart").innerHTML + "<option>Hello World</option>";
+function addPzza(pizzanr) {
+
+	
+    if(document.getElementById("shopping_cart").innerHTML.localeCompare("<option>Warenkorb</option>") == 0) {
+
+    	document.getElementById("shopping_cart").innerHTML = "<option>" + getName(pizzanr).value + " " + getPrice(pizzanr).value + "</option>";
+
+    }
+    else {
+    	document.getElementById("shopping_cart").innerHTML = document.getElementById("shopping_cart").innerHTML + "<option>" + getName(pizzanr).value + " " + getPrice(pizzanr).value + "</option>";
+    }
+    
     console.log("" + cars[1]);
 }
