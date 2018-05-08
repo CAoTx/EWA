@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Order</title>
+    <meta charset="utf-8">
+  </head>
+  <body style="background-color: lightgray">
+    <h1>Order</h1>
+
+    <div>
+    <section class="col-sm-6">
+    <table>
+      <tr>
+        <td><a href="#" id="add-magherita"><img src="../assets/pizza.png" width="130" height="130" alt="Magherita Pizza"></a></td>
+        <td><span class="name">Magherita</span></td>
+        <td>4,00 €</td>
+      </tr>
+      <tr>
+        <td><a href="#" id="add-salami"><img src="../assets/pizza.png" width="130" height="130" alt="Salami Pizza"></a></td>
+        <td><span class="name">Salami</span></td>
+        <td>4,50 €</td>
+      <tr>
+        <td><a href="#" id="add-hawaii"><img src="../assets/pizza.png" width="130" height="130" alt="Hawaii Pizza"></a></td>
+        <td><span class="name">Hawaii</span></td>
+        <td>5, 50 €</td>
+      </tr>
+    </table>
+    </section>
+</div>
+<div>
+    <section class="col-sm-6">
+    <select name="Payment" multiple size="3">
+      <option>Cash</option>
+      <option>Paypal</option>
+      <option>Transfer</option>
+    </select>
+  </section>
+</div>
+
+    <p><span id="sum">15,70</span>€</p> 
+    <input type="text" placeholder="Name, Adresse" name="Adresse">
+    <button type="reset" id="delete-all">Delete all</button>
+    <button type="button" id="delete-selected">Delete selected</button>
+    <button type="submit">Order</button>
+
+  </body>
+</html>
+

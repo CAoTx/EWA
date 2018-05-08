@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <title>Deliverer</title>
+  <meta charset="utf-8">
+</head>
+
+<body style="background-color: lightgray">
+  <form class="order" action="http://www.fbi.h-da.de/cgi-bin/Echo.pl" method="POST">
+    <h1 style="color:blueviolet">Deliverer</h1>
+
+
+    <article class="order">
+      <h3>Hermann, Birkenweg 2, 64283 Darmstadt</h3>
+      <p>Family Salami</p>
+      <p>Price: 14,30 €</p>
+      <table>
+        <tr>
+          <td>Ready</td>
+          <td>On-the-Fly</td>
+          <td>Delivered</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" name="Order0" value="0">
+          </td>
+          <td>
+            <input type="radio" name="Order0" value="1" checked>
+          </td>
+          <td>
+            <input type="radio" name="Order0" value="2">
+          </td>
+        </tr>
+      </table>
+    </article>
+
+    <article class="order">
+      <h3>Meier, Hauptstr. 5, Kaiserslautern</h3>
+      <p>Tonno, Margherita</p>
+      <p>Price: 10,50 €</p>
+      <table>
+        <tr>
+          <td>Ready</td>
+          <td>On-the-Fly</td>
+          <td>Delivered</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" name="Order1" value="0">
+          </td>
+          <td>
+            <input type="radio" name="Order1" value="1" checked>
+          </td>
+          <td>
+            <input type="radio" name="Order1" value="2">
+          </td>
+          <!-- onclick="this.form.submit()" -->
+        </tr>
+      </table>
+    </article>
+
+  </form>
+</body>
+
+</html>
