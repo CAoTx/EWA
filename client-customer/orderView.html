@@ -3,7 +3,8 @@
   <head>
     <title>Order</title>
     <meta charset="utf-8">
-    <meta http-equiv="refresh" content = "5" />
+    <!-- <meta http-equiv="refresh" content = "5" /> -->
+    <script type="text/javascript" src="orderView.js"></script>
   </head>
   <body style="background-color: lightgray">
     <h1>Order</h1>
@@ -28,11 +29,17 @@
       </tr>
     </table>
 -->
-      <ul>
-        <li><a href="#" id="add-magherita"><img src="../assets/pizza.png" width="130" height="130" alt="Magherita Pizza"><span class="name">Magherita</span> 4,00 € </a></li>
-        <li><a href="#" id="add-salami"><img src="../assets/pizza.png" width="130" height="130" alt="Salami Pizza"><span class="name">Salami</span> 4,50 € </a></li>
-        <li><a href="#" id="add-hawaii"><img src="../assets/pizza.png" width="130" height="130" alt="Hawaii Pizza"><span class="name">Hawaii</span> 5, 50 € </a></li>
-      </ul>
+      <table>
+        <tr>
+          <td><a href="#" id="add-magherita"><img src="../assets/pizza.png" width="130" height="130" alt="Magherita Pizza"></a></td><td><span class="name">Magherita</span></td><td> 4,00 € </td>
+        </tr>
+        <tr>
+          <td><a href="#" id="add-salami"><img src="../assets/pizza.png" width="130" height="130" alt="Salami Pizza"></a></td><td><span class="name">Salami</span></td><td> 4,50 € </a></td>
+        </tr>
+        <tr>
+          <td><a href="#" id="add-hawaii"><img src="../assets/pizza.png" width="130" height="130" alt="Hawaii Pizza" onclick="addPzza('Hawaii')"></a></td><td><span class="name">Hawaii</span></td><td> 5, 50 € </a></td>
+        </tr>
+      </table>
 
       <form action="https://www.fbi.h-da.de/cgi-bin/Echo.pl" method= "POST">
         <select name="payment" multiple size="3">
@@ -41,15 +48,13 @@
           <option>Transfer</option>
         </select>
 
-        <select id = "bestellliste" name="bestellliste" multiple size="3" width = "600">
-          <option>Pizza1</option>
-          <option>Pizza2</option>
-          <option>Pizza3</option>
+        <select id = "shopping_cart" name="shopping_cart[]" multiple size="3" >
+          <option>Warenkorb</option>
         </select>
 
 
         <input type = "text" name = "adresse" placeholder = "Lieferadresse angeben...">
-        <input type = "text" name = "preis" placeholder = "0.0 €" readonly>
+        <input type = "text" name = "preis" placeholder = "0.0 €" readonly value = "20€">
         <input type = "submit" name = "submit" />
       </form>
 
