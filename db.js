@@ -3,71 +3,87 @@
 var PizzaNames = [
 
     {
-        key: 1, value: "Salami"
+        key: 0, value: "Salami"
     },
     {
-        key: 2, value: "Cheese"
+        key: 1, value: "Cheese"
     },
     {
-        key: 3, value: "Peperoni"
+        key: 2, value: "Peperoni"
     },
     {
-        key: 4, value: "Tuna"
+        key: 3, value: "Tuna"
     },
     {
-        key: 5, value: "Ham"
+        key: 4, value: "Ham"
     },
     {
-        key: 6, value: "Veggi"
+        key: 5, value: "Veggi"
     },
 ]
 
 var PizzaPrices = [
 
     {
-        key: 1, value: 6.00
+        key: 0, value: 6.00
     },
     {
-        key: 2, value: 5.00
+        key: 1, value: 5.00
     },
     {
-        key: 3, value: 6.90
+        key: 2, value: 6.90
+    },
+    {
+        key: 3, value: 6.00
     },
     {
         key: 4, value: 6.00
     },
     {
-        key: 5, value: 6.00
-    },
-    {
-        key: 6, value: 6.50
+        key: 5, value: 6.50
     },
 ]
 
 var Orders = [
     //status 1=Orderes, 2=Baking, 3=OnItsWay
     {
-        key:1, price: 54.00, p1:1, p2:2, p3:3, p4:4, status:3
+        key: 2, price: 54.00, p1: 0, p2: 1, p3: 2, p4: -1, status: 2, addr:"64253"
     },
     {
-        key:2, price: 24, p1:3, p2:5, p3:0, p4:0, status:2
+        key: 3, price: 24, p1: 3, p2: 4, p3: -1, p4: -1, status: 3, addr:"54673"
     },
 ]
 
 
 function getPrice(Pid) {
-
-   return PizzaPrices[Pid];
-
+    return PizzaPrices[Pid];
 }
 
-function getName(Pid){
+function getName(Pid) {
     return PizzaNames[Pid];
 }
 
-function addOrder(data){
+function addOrder(data) {
     Orders.push({
-        key: data.key, price: data.price , p1:data.p1, p2:data.p2, p3:data.p3, p4:data.p4, status:1
+        key: data.key, price: data.price, p1: data.p1, p2: data.p2, p3: data.p3, p4: data.p4, status: 1, addr: data.addr
     });
+}
+
+function getLastWaiting() {
+    return Orders.length;
+}
+
+function getWaitingOrders() {
+    var arr = [];
+    for (var i = 0; i < Orders.length; i++) {
+        if (Orders[i].status < 2) {
+            arr.push(Orders[i]);
+        }
+    }
+    return arr;
+}
+
+function getOrders(){
+    return Orders; 
 }
 
