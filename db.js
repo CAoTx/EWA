@@ -47,22 +47,40 @@ var PizzaPrices = [
 var Orders = [
     //status 1=Ordered, 2=Baking, 3=Ready 4=OnItsWay 5=Delivered
     {
-        ord_id: 2, price: 54.00, pizza: 0, status: 4, addr:"64253"
+        ord_id: 2, price: 54.00, pizza: 2, status: 4, addr:"Max MusterMann Heidelberger 2, 64285"
     },
     {
-        ord_id: 3, price: 24, pizza: 3, status: 3, addr:"54673"
+        ord_id: 2, price: 24, pizza: 3, status: 3, addr:"Jan Dubi Bessunger 2, 97223"
     },
     {
-        ord_id: 2, price: 54.00, pizza: 0, status: 4, addr:"64253"
+        ord_id: 2, price: 54.00, pizza: 0, status: 4, addr:"Tim Meyer Süliche Ringstraße 2, 53921"
     },
     {
-        ord_id: 3, price: 24, pizza: 3, status: 3, addr:"54673"
+        ord_id: 3, price: 24, pizza: 3, status: 3, addr:"Max MusterMann Heidelberger 2, 83392"
     },
     {
-        ord_id: 2, price: 54.00, pizza: 0, status: 4, addr:"64253"
+        ord_id: 4, price: 54.00, pizza: 0, status: 4, addr:"Max MusterMann Heidelberger 2, 409942"
     },
     {
-        ord_id: 3, price: 24, pizza: 3, status: 3, addr:"54673"
+        ord_id: 4, price: 24, pizza: 3, status: 3, addr:"Max MusterMann Heidelberger 2, 48432"
+    },
+    {
+        ord_id: 4, price: 54.00, pizza: 2, status: 4, addr:"Max MusterMann Heidelberger 2, 64285"
+    },
+    {
+        ord_id: 5, price: 24, pizza: 3, status: 3, addr:"Jan Dubi Bessunger 2, 97223"
+    },
+    {
+        ord_id: 5, price: 54.00, pizza: 0, status: 4, addr:"Tim Meyer Süliche Ringstraße 2, 53921"
+    },
+    {
+        ord_id: 6, price: 24, pizza: 3, status: 3, addr:"Max MusterMann Heidelberger 2, 83392"
+    },
+    {
+        ord_id: 7, price: 54.00, pizza: 0, status: 4, addr:"Max MusterMann Heidelberger 2, 409942"
+    },
+    {
+        ord_id: 8, price: 24, pizza: 3, status: 3, addr:"Max MusterMann Heidelberger 2, 48432"
     },
 ]
 
@@ -100,4 +118,3 @@ function getWaitingOrders() {
     }
     return arr;
 }
-
