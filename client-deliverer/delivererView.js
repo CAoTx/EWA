@@ -24,10 +24,9 @@ function createOrders() {
 }
 
 function setStatus(idx, stat) {
-    if (idx > 0) {
+    if (idx > 0 && idx < Orders.length) {
         Orders[idx].status = stat;
     }
-
 }
 
 
@@ -76,23 +75,27 @@ function createContent() {
 
             var lab1 = document.createElement("label");
             lab1.setAttribute("class", "radioLabel");
-            var lab2 = lab1;
-            var lab3 = lab2;
+            var lab2 = document.createElement("label");
+            lab2.setAttribute("class", "radioLabel");
+            var lab3 = document.createElement("label");
+            lab3.setAttribute("class", "radioLabel");
+            lab1.innerHTML = "Ready";
+            lab2.innerHTML = "Flying";
+            lab3.innerHTML = "Finish";
 
             var sp1 = document.createElement("span");
             sp1.setAttribute("class", "radioSpan");
-            var sp2 = sp1;
-            var sp3 = sp2;
-            sp1.innerHTML = "Ready";
-            sp2.innerHTML = "Flying";
-            sp3.innerHTML = "Finish";
+            var sp2 = document.createElement("span");
+            sp2.setAttribute("class", "radioSpan");
+            var sp3 = document.createElement("span");
+            sp3.setAttribute("class", "radioSpan");
+
 
             var in1 = document.createElement("input");
             in1.setAttribute("type", "radio");
             in1.setAttribute("value", "0");
             in1.setAttribute("onclick", "setStatus(" + x + ", 3)");
             in1.setAttribute("name", "in" + x);
-            in1.setAttribute("checked", "checked");
 
             var in2 = document.createElement("input");
             in2.setAttribute("type", "radio");
@@ -105,7 +108,18 @@ function createContent() {
             in3.setAttribute("value", "2");
             in3.setAttribute("onclick", "setStatus(" + x + ", 5)");
             in3.setAttribute("name", "in" + x);
-            in3.innerHTML = "OUT";
+
+            switch (Orders[x].status) {
+                case 3: in1.setAttribute("checked", "checked"); break;
+                case 4: in2.setAttribute("checked", "checked"); break;
+            }
+
+            lab1.appendChild(in1);
+            lab1.appendChild(sp1);
+            lab2.appendChild(in2);
+            lab2.appendChild(sp2);
+            lab3.appendChild(in3);
+            lab3.appendChild(sp3);
 
             art.appendChild(p1);
             art.appendChild(p2);
@@ -117,9 +131,9 @@ function createContent() {
             }
 
             art.appendChild(p3);
-            art.appendChild(in1);
-            art.appendChild(in2);
-            art.appendChild(in3);
+            art.appendChild(lab1);
+            art.appendChild(lab2);
+            art.appendChild(lab3);
 
             document.getElementById("mainContent").appendChild(art);
 

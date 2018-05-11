@@ -47,53 +47,62 @@ var PizzaPrices = [
 var Orders = [
     //status 1=Ordered, 2=Baking, 3=Ready 4=OnItsWay 5=Delivered
     {
-        ord_id: 2, price: 54.00, pizza: 2, status: 4, addr:"Max MusterMann Heidelberger 2, 64285"
+        ord_id: 2, price: 54.00, pizza: 0, status: 4, addr: "Max MusterMann Heidelberger 2, 64285"
     },
     {
-        ord_id: 2, price: 24, pizza: 3, status: 3, addr:"Jan Dubi Bessunger 2, 97223"
+        ord_id: 2, price: 24, pizza: 1, status: 4, addr: "Jan Dubi Bessunger 2, 97223"
     },
     {
-        ord_id: 2, price: 54.00, pizza: 0, status: 4, addr:"Tim Meyer Süliche Ringstraße 2, 53921"
+        ord_id: 2, price: 54.00, pizza: 2, status: 4, addr: "Tim Meyer Süliche Ringstraße 2, 53921"
     },
     {
-        ord_id: 3, price: 24, pizza: 3, status: 3, addr:"Max MusterMann Heidelberger 2, 83392"
+        ord_id: 3, price: 24, pizza: 3, status: 5, addr: "Max MusterMann Heidelberger 2, 83392"
     },
     {
-        ord_id: 4, price: 54.00, pizza: 0, status: 4, addr:"Max MusterMann Heidelberger 2, 409942"
+        ord_id: 4, price: 54.00, pizza: 4, status: 3, addr: "Max MusterMann Heidelberger 2, 409942"
     },
     {
-        ord_id: 4, price: 24, pizza: 3, status: 3, addr:"Max MusterMann Heidelberger 2, 48432"
+        ord_id: 4, price: 24, pizza: 5, status: 3, addr: "Max MusterMann Heidelberger 2, 48432"
     },
     {
-        ord_id: 4, price: 54.00, pizza: 2, status: 4, addr:"Max MusterMann Heidelberger 2, 64285"
+        ord_id: 4, price: 54.00, pizza: 0, status: 3, addr: "Max MusterMann Heidelberger 2, 64285"
+    }, 
+    {
+        ord_id: 5, price: 24, pizza: 5, status: 4, addr: "Max MusterMann Heidelberger 2, 48432"
     },
     {
-        ord_id: 5, price: 24, pizza: 3, status: 3, addr:"Jan Dubi Bessunger 2, 97223"
+        ord_id: 5, price: 54.00, pizza: 0, status: 4, addr: "Max MusterMann Heidelberger 2, 64285"
     },
     {
-        ord_id: 5, price: 54.00, pizza: 0, status: 4, addr:"Tim Meyer Süliche Ringstraße 2, 53921"
+        ord_id: 6, price: 24, pizza: 4, status: 2, addr: "Jan Dubi Bessunger 2, 97223"
     },
     {
-        ord_id: 6, price: 24, pizza: 3, status: 3, addr:"Max MusterMann Heidelberger 2, 83392"
+        ord_id: 6, price: 54.00, pizza: 3, status: 2, addr: "Tim Meyer Süliche Ringstraße 2, 53921"
     },
     {
-        ord_id: 7, price: 54.00, pizza: 0, status: 4, addr:"Max MusterMann Heidelberger 2, 409942"
+        ord_id: 7, price: 24, pizza: 3, status: 2, addr: "Max MusterMann Heidelberger 2, 83392"
     },
     {
-        ord_id: 8, price: 24, pizza: 3, status: 3, addr:"Max MusterMann Heidelberger 2, 48432"
+        ord_id: 8, price: 54.00, pizza: 2, status: 2, addr: "Max MusterMann Heidelberger 2, 409942"
+    },
+    {
+        ord_id: 9, price: 24, pizza: 1, status: 1, addr: "Max MusterMann Heidelberger 2, 48432"
+    },
+    {
+        ord_id: 9, price: 24, pizza: 0, status: 1, addr: "Max MusterMann Heidelberger 2, 48432"
     },
 ]
 
 
 function getPrice(Pid) {
-    if (Pid < 0){
+    if (Pid < 0) {
         return 0;
     }
     return PizzaPrices[Pid];
 }
 
 function getName(Pid) {
-    if (Pid < 0){
+    if (Pid < 0) {
         return "";
     }
     return PizzaNames[Pid];
