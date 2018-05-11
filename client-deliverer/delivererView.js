@@ -9,26 +9,11 @@ function _getPrice(idx) {
     console.log("Price = " + getName(idx).value);
 }
 
-function _btnOne() {
-    console.log()
-}
-
-function createOrders() {
-
-    var data = Orders;
-
-    for (var i = 0; i < data.length; i++) {
-        console.log(data[i]);
-    }
-
-}
-
 function setStatus(idx, stat) {
     if (idx > 0 && idx < Orders.length) {
         Orders[idx].status = stat;
     }
 }
-
 
 
 function createContent() {

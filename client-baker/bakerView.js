@@ -6,8 +6,10 @@ window.addEventListener('load', function () {
 });
 
 function setStatus(idx, stat) {
-    if (idx > 0 && idx < Orders.length)
+    if (idx > 0 && idx < Orders.length){
         Orders[idx].status = stat;
+        console.log ("Baker setted status, ID:" + Orders[idx].ord_id + ", Status:"+stat);
+    }
         return;
 }
 
