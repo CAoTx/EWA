@@ -1,0 +1,96 @@
+header {
+    background: #0074D9;
+    color: #fff;
+    width: 100%;
+    padding: 1px 0;
+    
+}
+header h1 {
+    font-weight: normal;
+    margin: 0 16px;
+  }
+
+body {
+    background-color: white;
+    margin: 3%;
+}
+
+floatLeft {
+    float: left;
+}
+
+
+div {
+    display: inline-block;
+}
+
+article {
+    display: inline-block;
+    /*width: 15em; */
+    border-style: solid;
+    /*margin: 2px;*/
+    /*padding: 0.5em;*/
+    width: 100%
+}
+
+a {
+    float: left;
+}
+
+span.price {
+    padding: 5px;
+}
+
+input.block_input {
+
+display: block;
+
+}
+
+select.shopping_cart {
+    width: 300px;
+}
+
+
+
+section {
+    display: inline-block;
+    width: 100%;
+    /*margin: 2px;*/
+    /*padding: 0.5em; */
+}
+
+section.orderButtons {
+
+    float: right;
+    width: 45%;
+
+}
+
+section.pizzaOffer {
+    width: 45%;
+    float: left;
+}
+
+h1 {
+    color: white;
+}
+
+mainContent {
+    display: block;;
+}
+
+.radioLabel {
+    display:inline-block;
+    margin: 1%;
+    vertical-align:top;
+    text-align:center;
+
+    /* IE 7 and below */
+    *display:inline;
+    *zoom:1;
+}
+
+.radioLabel * {
+    display:inline-block;
+}

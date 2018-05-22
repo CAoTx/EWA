@@ -114,6 +114,15 @@ function addOrder(data) {
     });
 }
 
+function nameToIndex(pizzaname) {
+    for(var i = 0; i < PizzaNames.length; i++) {
+        if(PizzaNames[i].value == (pizzaname)) return i;
+    }
+    return -1;
+}
+
+
+
 function getLastWaiting() {
     return Orders.length;
 }

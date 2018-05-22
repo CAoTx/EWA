@@ -4,52 +4,48 @@
     <title>Order</title>
     <meta charset="utf-8">
     <!-- <meta http-equiv="refresh" content = "5" /> -->
-    <script type="text/javascript" src="../db.js"></script>
+    <link rel = "stylesheet" type = "text/css" href = "client-customer.css">
     
   </head>
   <body style="background-color: lightgray">
-    <h1>Order</h1>
+    <header>
+      <h1>Order</h1>
+    </header>
 
     <div>
     <section>
 
-      <section id = "speisekarte">
+      <section id = "speisekarte" class= "pizzaOffer">
 <!--        <tr>
           <td><a href="#" id="add-hawaii"><img src="../assets/pizza.png" width="130" height="130" alt="Hawaii Pizza" onclick="addPzza(2)"></a></td><td><span class="name">Hawaii</span></td><td> 5, 50 € </a></td>
         </tr> -->
       </section>
 
-      <form action="https://www.fbi.h-da.de/cgi-bin/Echo.pl" method= "POST">
-        <select name="payment" multiple size="3">
-          <option>Cash</option>
-          <option>Paypal</option>
-          <option>Transfer</option>
-        </select>
+      <section id = "bestellbuttons" class = "orderButtons">
+      <form action="https://www.fbi.h-da.de/cgi-bin/Echo.pl" method= "POST" id = "pizzaOrderList">
+        <select id = "shopping_cart" class = "shopping_cart" name="shopping_cart[]" multiple size="10" ><option>Warenkorb</option> </select>
 
-        <select id = "shopping_cart" name="shopping_cart[]" multiple size="3" ><option>Warenkorb</option></select>
+        <input type = "text" class = "block_input" id = "adresse" name = "adresse" placeholder = "Lieferadresse angeben...">
+        <input type = "text" id = "preis" name = "preis" placeholder = "0.00 €" readonly value = "0.00">
 
-        <label for = "preis">Label</label>
-        <input type = "text" id = "adresse" name = "adresse" placeholder = "Lieferadresse angeben...">
-        <input type = "text" id = "preis" name = "preis" placeholder = "0.0 €" readonly value = "20€">
         <input type = "submit" name = "submit" />
       </form>
 
-    
+      <button type="reset" id="delete-all" onclick="removeAllPizzas()">Delete all</button>
+      <button type="button" id="delete-selected" onclick="removeSelectedPizza()">Delete selected</button>
+      <button type="submit">Order</button>
 
     </section>
-</div>
-<div>
-    <section class="col-sm-6">
-    
 
+    
+    
   </section>
 </div>
-    <button type="reset" id="delete-all">Delete all</button>
-    <button type="button" id="delete-selected" onclick="removePizza(2)">Delete selected</button>
-    <button type="submit">Order</button>
-
+    
   </body>
 
+  
+  <script type="text/javascript" src="../db.js"></script>
   <script type="text/javascript" src="orderView.js"></script>
 </html>
 
