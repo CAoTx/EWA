@@ -17,7 +17,7 @@
  */
 
 // to do: change name 'Order' throughout this file
-require_once './Page.php';
+require_once '../Page.php';
 
 // include connection to our database
 include '../db.php';
