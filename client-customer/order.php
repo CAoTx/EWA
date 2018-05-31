@@ -19,8 +19,6 @@
 // to do: change name 'Order' throughout this file
 require_once '../Page.php';
 
-// include connection to our database
-include '../db.php';
 
 /**
  * This is a template for top level classes, which represent 
@@ -63,7 +61,7 @@ class Order extends Page
         
         $pizzas = [];
 
-        header( "content-type: application/xml; charset=utf-8" );
+        header("Content-type: text/html; charset=UTF-8");
 
         $dom = new DOMDocument("1.0", "utf-8");
 
@@ -74,7 +72,7 @@ class Order extends Page
         $dom->appendChild($orderSection);
 
 
-        $results = $mysqli->query("select * from menu");
+        $results = (new mysqli('localhost','root','','ewa'))->query("select * from menu");
         
 
         if ($results->num_rows > 0) {
@@ -83,9 +81,9 @@ class Order extends Page
             // output data of each row
             while($row = $results->fetch_assoc()) {
 
-                $a_pizza = $menuSection->createElement("a");
+                $a_pizza = $dom->createElement("a");
 
-                $img_pizza = $a_pizza->createElement("img");
+                $img_pizza = $dom->createElement("img");
                 $img_pizza->setAttribute("src", "../assets/pizza.png");
 
                 $a_pizza->appendChild($img_pizza);

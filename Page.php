@@ -15,6 +15,9 @@
  * @Release  1.2 
  * @link     http://www.fbi.h-da.de 
  */
+
+// include connection to our database
+include '../db.php';
  
 /**
  * This abstract class is a common base class for all 
@@ -49,7 +52,7 @@ abstract class Page
      */
     protected function __construct() 
     {
-        $this->_database = $mysqli/* to do: create instance of class MySQLi */;
+        $this->_database = new mysqli('localhost','root','','ewa') or die($mysqli->error)/* to do: create instance of class MySQLi */;
     }
     
     /**
