@@ -156,4 +156,4 @@ function createSpeisekarte() {
 	}
 }
 
-createSpeisekarte();
+//createSpeisekarte();
