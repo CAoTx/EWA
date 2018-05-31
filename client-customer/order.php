@@ -1,3 +1,7 @@
+<style>
+<?php include 'client-customer.css'; ?>
+</style>
+
 <?php	// UTF-8 marker äöüÄÖÜß€
 /**
  * Class Order for the exercises of the EWA lecture
@@ -62,6 +66,10 @@ class Order extends Page
         $pizzas = [];
 
         header("Content-type: text/html; charset=UTF-8");
+        
+        echo "<link rel = 'stylesheet' type = 'text/css' href = './client-customer.css'>";
+
+        
 
         $dom = new DOMDocument("1.0", "utf-8");
 
@@ -71,6 +79,7 @@ class Order extends Page
         $dom->appendChild($menuSection);
         $dom->appendChild($orderSection);
 
+        
 
         $results = (new mysqli('localhost','root','','ewa'))->query("select * from menu");
         
@@ -85,6 +94,9 @@ class Order extends Page
 
                 $img_pizza = $dom->createElement("img");
                 $img_pizza->setAttribute("src", "../assets/pizza.png");
+                $img_pizza->setAttribute("class", "imgPizza");
+                //$img_pizza->setAttribute("height", "130");
+                //$img_pizza->setAttribute("width", "130");
 
                 $a_pizza->appendChild($img_pizza);
                 $menuSection->appendChild($a_pizza);
@@ -102,7 +114,7 @@ class Order extends Page
               </div>";
 */           
               $counter = $counter + 1;
-              echo $pizza_item;
+              //echo $pizza_item;
             }
           }
           else {

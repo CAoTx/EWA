@@ -19,6 +19,10 @@ floatLeft {
     float: left;
 }
 
+.imgPizza {
+    width : 130px;
+    height : 130px;
+}
 
 div {
     display: inline-block;
