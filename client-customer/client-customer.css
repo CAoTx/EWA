@@ -52,7 +52,7 @@ display: block;
 }
 
 select.shopping_cart {
-    width: 300px;
+    width: 50%;
 }
 
 
@@ -66,14 +66,26 @@ section {
 
 section.orderButtons {
 
-    float: right;
+    display: inline-block;
     width: 45%;
+
+    margin-top: 100px;
 
 }
 
 section.pizzaOffer {
     width: 45%;
-    float: left;
+    display: block;
+    
+    margin-top: 100px;
+}
+
+
+section {
+    display: inline-block;
+    width: 100%;
+    /*margin: 2px;*/
+    /*padding: 0.5em; */
 }
 
 h1 {

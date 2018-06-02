@@ -11,36 +11,31 @@
     <header>
       <h1>Order</h1>
     </header>
-
+    
     <div>
-    <section>
+      <section>
+        
+        <section id = "speisekarte" class= "pizzaOffer">
 
-      <section id = "speisekarte" class= "pizzaOffer">
-<!--        <tr>
-          <td><a href="#" id="add-hawaii"><img src="../assets/pizza.png" width="130" height="130" alt="Hawaii Pizza" onclick="addPzza(2)"></a></td><td><span class="name">Hawaii</span></td><td> 5, 50 € </a></td>
-        </tr> -->
+        </section>
+        
+        <section id = "bestellbuttons" class = "orderButtons">
+          <form action="https://www.fbi.h-da.de/cgi-bin/Echo.pl" method= "POST" id = "pizzaOrderList">
+            <select id = "shopping_cart" class = "shopping_cart"  multiple size="10" ><option>Warenkorb</option> </select>
+            
+            <input type = "text" class = "block_input" id = "adresse" name = "adresse" placeholder = "Lieferadresse angeben..." required>
+            <input type = "text" class = "block_input" id = "preis" name = "preis" placeholder = "0.00 €" readonly value = "0.00">
+            
+            <input type = "submit" value = "Order" id = "orderButton"/>
+            <button type="reset" id="delete-all" onclick="removeAllPizzas()">Delete all</button>
+            <button type="button" id="delete-selected" onclick="removeSelectedPizza()">Delete selected</button>
+          </form>
+          
+
+        </section>
+      
       </section>
-
-      <section id = "bestellbuttons" class = "orderButtons">
-      <form action="https://www.fbi.h-da.de/cgi-bin/Echo.pl" method= "POST" id = "pizzaOrderList">
-        <select id = "shopping_cart" class = "shopping_cart" name="shopping_cart[]" multiple size="10" ><option>Warenkorb</option> </select>
-
-        <input type = "text" class = "block_input" id = "adresse" name = "adresse" placeholder = "Lieferadresse angeben...">
-        <input type = "text" id = "preis" name = "preis" placeholder = "0.00 €" readonly value = "0.00">
-
-        <input type = "submit" name = "submit" />
-      </form>
-
-      <button type="reset" id="delete-all" onclick="removeAllPizzas()">Delete all</button>
-      <button type="button" id="delete-selected" onclick="removeSelectedPizza()">Delete selected</button>
-      <button type="submit">Order</button>
-
-    </section>
-
-    
-    
-  </section>
-</div>
+    </div>
     
   </body>
 

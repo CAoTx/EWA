@@ -1,42 +1,40 @@
+' use strict '
+
 var cart = document.getElementById("shopping_cart");
 var price = document.getElementById("preis");
 var form = document.getElementById("pizzaOrderList");
 
 
-var pizzaOrders = 0;
 
 
 function addPzza(pizzanr) {
 
 
-	//cart.removeChild(document.getElementById());
-
     if(cart.innerHTML.trim().localeCompare("<option>Warenkorb</option>") == 0) {
 
-    	cart.innerHTML = "";//"<option>" + getName(pizzanr).value + " " + getPrice(pizzanr).value + "</option>";
+    	cart.innerHTML = "";
 
 	}
 	
 	var pizza = document.createElement("option");
-	//pizza.setAttribute("");
-
-
-
 	pizza.innerHTML = getName(pizzanr).value;
-
-	
-
 	cart.appendChild(pizza);
-
-	
-	_PriceField(getPrice(pizzanr).value);
 
 	var hiddenInput = document.createElement("input");
 	hiddenInput.setAttribute("type", "hidden");
-	hiddenInput.setAttribute("name", "pizzaOrder\[" + pizzaOrders + "\]");
-	pizzaOrders = pizzaOrders + 1;
-	form.appendChild(hiddenInput);
-    
+	hiddenInput.setAttribute("name", "pizzaOrder\[" + pizzanr + "\]");
+	hiddenInput.setAttribute("value", getName(pizzanr).value);
+
+	cart.appendChild(hiddenInput);
+	
+	_PriceField(getPrice(pizzanr).value);
+
+	
+	
+	if(cart.children.length > 0) {
+		
+		document.getElementById("orderButton").disabled = false;
+	}
 }
 
 
@@ -59,6 +57,8 @@ function removeSelectedPizza() {
 
 		cart.appendChild(warenkorb);
 
+		document.getElementById("orderButton").disabled = true;
+
 	}
 
 
@@ -69,11 +69,13 @@ function removeAllPizzas() {
 	cart.innerHTML = "";
 	_PriceField(0);
 
-	//var warenkorb = document.createElement("option");
-	cart.setAttribute("placeholder", "Warenkorb");
-	//warenkorb.innerHTML = "Warenkorb";
+	var warenkorb = document.createElement("option");
+	warenkorb.innerHTML = "Warenkorb";
 
-	//cart.appendChild(warenkorb);
+	cart.appendChild(warenkorb);
+
+	document.getElementById("orderButton").disabled = true;
+
 
 }
 
@@ -156,4 +158,6 @@ function createSpeisekarte() {
 	}
 }
 
-//createSpeisekarte();
+createSpeisekarte();
+
+document.getElementById("orderButton").disabled = true;

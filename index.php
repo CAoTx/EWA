@@ -10,7 +10,7 @@
   <nav>
     <ul>
       <li>
-        <a href="client-customer/order.php">Order</a>
+        <a href="client-customer/orderView.html">Order</a>
       </li>
       <li>
         <a href="client-customer/statusView.html">Order Status</a>

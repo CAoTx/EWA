@@ -1,7 +1,3 @@
-<style>
-<?php include 'client-customer.css'; ?>
-</style>
-
 <?php	// UTF-8 marker äöüÄÖÜß€
 /**
  * Class Order for the exercises of the EWA lecture
@@ -19,6 +15,7 @@
  * @Release  1.2 
  * @link     http://www.fbi.h-da.de 
  */
+
 
 // to do: change name 'Order' throughout this file
 require_once '../Page.php';
@@ -73,6 +70,8 @@ class Order extends Page
 
         $dom = new DOMDocument("1.0", "utf-8");
 
+        /*$dom->addStyle( <?php include './client-customer.css'; ?> );*/
+
         $menuSection = $dom->createElement("section");
         $orderSection = $dom->createElement("section");
 
@@ -122,7 +121,7 @@ class Order extends Page
           }
 
 
-          print $dom->saveXML();
+          print $dom->saveHTML();
 
 
     }
@@ -208,7 +207,13 @@ class Order extends Page
         }
     }
 }
-
+/*
+?>
+<style>
+<?php include "client-customer.css"; ?>
+</style>
+<?php
+*/
 // This call is starting the creation of the page. 
 // That is input is processed and output is created.
 Order::main();
