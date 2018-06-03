@@ -53,6 +53,7 @@ abstract class Page
     protected function __construct() 
     {
         $this->_database = new mysqli('localhost','root','','ewa') or die($mysqli->error)/* to do: create instance of class MySQLi */;
+        session_start();
     }
     
     /**
@@ -62,6 +63,7 @@ abstract class Page
      */
     protected function __destruct()    
     {
+        $this->_database->close();
         // to do: close database
     }
     

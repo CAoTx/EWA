@@ -1,6 +1,6 @@
 <?php	// UTF-8 marker äöüÄÖÜß€
 /**
- * Class PageTemplate for the exercises of the EWA lecture
+ * Class Order for the exercises of the EWA lecture
  * Demonstrates use of PHP including class and OO.
  * Implements Zend coding standards.
  * Generate documentation with Doxygen or phpdoc
@@ -16,8 +16,10 @@
  * @link     http://www.fbi.h-da.de 
  */
 
-// to do: change name 'PageTemplate' throughout this file
-require_once './Page.php';
+
+// to do: change name 'Order' throughout this file
+require_once '../Page.php';
+
 
 /**
  * This is a template for top level classes, which represent 
@@ -31,11 +33,15 @@ require_once './Page.php';
  * @author   Bernhard Kreling, <b.kreling@fbi.h-da.de> 
  * @author   Ralf Hahn, <ralf.hahn@h-da.de> 
  */
-class PageTemplate extends Page
+class Order extends Page
 {
     // to do: declare reference variables for members 
     // representing substructures/blocks
     
+   
+
+
+
     /**
      * Instantiates members (to be defined above).   
      * Calls the constructor of the parent i.e. page class.
@@ -47,6 +53,47 @@ class PageTemplate extends Page
     {
         parent::__construct();
         // to do: instantiate members representing substructures/blocks
+
+        $orders = [];
+
+        header("Content-type: text/html; charset=UTF-8");
+        
+        echo "<link rel = 'stylesheet' type = 'text/css' href = './client-customer.css'>";
+        
+
+        $results = (new mysqli('localhost','root','','ewa'))->query("select * from menu");
+        
+
+        if ($results->num_rows > 0) {
+            $counter = 0;
+            
+            // output data of each row
+            while($row = $results->fetch_assoc()) {
+
+                //echo "id_pizza: " . $row["id_pizza"]. " - name_pizza: " . $row["name_pizza"]. " " . $row["price_pizza"]. "<br>";
+             $pizza_item = 
+              "<div>
+                <a href = # id = 'getName(" . $counter . ")'>
+                  <img src = '../assets/pizza.png' width = '130' height = '130' alt = 'pizzaImg' onclick = 'addPzza(" . $counter . ")'> </img>
+                  <span class = 'name'>" . $row['name_pizza'] . "</span>
+                  <span class = 'price'> " . $row['price_pizza'] ."</span>
+                </a>
+                <span> </span>
+                <span> </span>
+              </div>";
+
+              $counter = $counter + 1;
+              echo $pizza_item;
+            }
+          }
+          else {
+            echo "0 results";
+          }
+
+
+          print $dom->saveHTML();
+
+
     }
     
     /**
@@ -70,6 +117,8 @@ class PageTemplate extends Page
     protected function getViewData()
     {
         // to do: fetch data for this view from the database
+
+
     }
     
     /**
@@ -120,7 +169,7 @@ class PageTemplate extends Page
     public static function main() 
     {
         try {
-            $page = new PageTemplate();
+            $page = new Order();
             $page->processReceivedData();
             $page->generateView();
         }
@@ -130,10 +179,16 @@ class PageTemplate extends Page
         }
     }
 }
-
+/*
+?>
+<style>
+<?php include "client-customer.css"; ?>
+</style>
+<?php
+*/
 // This call is starting the creation of the page. 
 // That is input is processed and output is created.
-PageTemplate::main();
+Order::main();
 
 // Zend standard does not like closing php-tag!
 // PHP doesn't require the closing tag (it is assumed when the file ends). 

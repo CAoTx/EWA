@@ -18,6 +18,7 @@
 
 // to do: change name 'PageTemplate' throughout this file
 require_once './Page.php';
+include '../db.php';
 
 /**
  * This is a template for top level classes, which represent 
