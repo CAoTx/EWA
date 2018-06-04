@@ -9,8 +9,9 @@ function setStatus(idx, stat) {
     if (idx > 0 && idx < Orders.length){
         Orders[idx].status = stat;
         console.log ("Baker setted status, ID:" + Orders[idx].ord_id + ", Status:"+stat);
+        console.log("UPDATE bestellungen SET status= " + stat + " WHERE id = " + Orders[idx].ord_id);
     }
-        return;
+    return;
 }
 
 function createContent() {
@@ -50,19 +51,19 @@ function createContent() {
             var in1 = document.createElement("input");
             in1.setAttribute("type", "radio");
             in1.setAttribute("value", "0");
-            in1.setAttribute("onclick", "setStatus(" + x + ", 3)");
+            in1.setAttribute("onclick", "setStatus(" + x + ", 1)");
             in1.setAttribute("name", "in" + x);
 
             var in2 = document.createElement("input");
             in2.setAttribute("type", "radio");
             in2.setAttribute("value", "1");
             in2.setAttribute("name", "in" + x);
-            in2.setAttribute("onclick", "setStatus(" + x + ", 4)");
+            in2.setAttribute("onclick", "setStatus(" + x + ", 2)");
 
             var in3 = document.createElement("input");
             in3.setAttribute("type", "radio");
             in3.setAttribute("value", "2");
-            in3.setAttribute("onclick", "setStatus(" + x + ", 5)");
+            in3.setAttribute("onclick", "setStatus(" + x + ", 3)");
             in3.setAttribute("name", "in" + x);
 
             switch (Orders[x].status) {

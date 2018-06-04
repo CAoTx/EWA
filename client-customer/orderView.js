@@ -18,13 +18,14 @@ function addPzza(pizzanr) {
 	
 	var pizza = document.createElement("option");
 	pizza.innerHTML = getName(pizzanr).value;
-	cart.appendChild(pizza);
+	
 
 	var hiddenInput = document.createElement("input");
 	hiddenInput.setAttribute("type", "hidden");
-	hiddenInput.setAttribute("name", "pizzaOrder\[" + pizzanr + "\]");
+	hiddenInput.setAttribute("name", "pizzaOrder[" + cart.children.length / 2 + "]");
 	hiddenInput.setAttribute("value", getName(pizzanr).value);
 
+	cart.appendChild(pizza);
 	cart.appendChild(hiddenInput);
 	
 	_PriceField(getPrice(pizzanr).value);
@@ -34,6 +35,7 @@ function addPzza(pizzanr) {
 	if(cart.children.length > 0) {
 		
 		document.getElementById("orderButton").disabled = false;
+		document.getElementById("delete-selected").disabled = false;
 	}
 }
 
@@ -42,13 +44,17 @@ function removeSelectedPizza() {
 
 	if(cart.selectedIndex == -1) return;
 
-	var selectedIndex = cart.selectedIndex;
-
+	var selectedIndex = 2 * cart.selectedIndex;
 
 	var preisdiff = -1 * getPrice( nameToIndex( cart.children[selectedIndex].value ) ).value;
-
+	
+	//remove the <option> element
 	cart.removeChild(cart.children[selectedIndex]);
 
+	//remove the hidden input
+	cart.removeChild(cart.children[selectedIndex]);
+
+	console.log(preisdiff);
 	_PriceField(preisdiff);
 
 	if(cart.innerHTML.localeCompare("") == 0) {
@@ -58,6 +64,7 @@ function removeSelectedPizza() {
 		cart.appendChild(warenkorb);
 
 		document.getElementById("orderButton").disabled = true;
+		document.getElementById("delete-selected").disabled = true;
 
 	}
 
@@ -75,7 +82,7 @@ function removeAllPizzas() {
 	cart.appendChild(warenkorb);
 
 	document.getElementById("orderButton").disabled = true;
-
+	document.getElementById("delete-selected").disabled = true;
 
 }
 
@@ -97,39 +104,35 @@ function _PriceField(pricediff) {
 
 
 
-
-
-
-
-
-
-
 function createSpeisekarte() {
 
 	for(var i = 0; i < PizzaNames.length; i++) {
 		
 		var e_id = "pizza" + i;
 
-		var tr = document.createElement("div");
-		var tdimg = document.createElement("span");
-		var a = document.createElement("a");
+		var pizzaDiv = document.createElement("div");
+		pizzaDiv.setAttribute("class", "menuPizzaItem");
 
+		var a = document.createElement("a");
+		a.setAttribute('onclick', "addPzza(" + i + ")");
 		a.setAttribute('href', "#");
 		a.setAttribute('id', getName(i));
+
 		var img = document.createElement("img");
 		img.setAttribute('src', "../assets/pizza.png");
-		img.setAttribute('width', "130");
-		img.setAttribute('height', "130");
+		img.setAttribute('width', "80");
+		img.setAttribute('height', "80");
 		img.setAttribute('alt', "Pizzaimg");
-		img.setAttribute('onclick', "addPzza(" + i + ")");
-		var tdpizza = document.createElement("span");
+
+		
 		var spanpizza = document.createElement("span");
 		spanpizza.setAttribute('class', "name");
 		spanpizza.innerHTML = "" + getName(i).value;
-		var tdprice = document.createElement("span");
-		var spanprice = document.createElement("span");
 		
+
+		var spanprice = document.createElement("span");
 		spanprice.setAttribute('class', 'price');
+
 		var pricestr = "" + getPrice(i).value;
 		
 		if(pricestr.includes(".")) {
@@ -143,17 +146,13 @@ function createSpeisekarte() {
 
 		spanprice.innerHTML = pricestr;
 
-		//tr.appendChild(tdimg);
-		tr.appendChild(a);
+
+		pizzaDiv.appendChild(a);
 		a.appendChild(img);
 		a.appendChild(spanpizza);
 		a.appendChild(spanprice);
-		tr.appendChild(tdpizza);
-		//tdpizza.appendChild(spanpizza);
-		tr.appendChild(tdprice);
-		//tdprice.appendChild(spanprice);
 
-		document.getElementById("speisekarte").appendChild(tr);
+		document.getElementById("speisekarte").appendChild(pizzaDiv);
 
 	}
 }
@@ -161,3 +160,4 @@ function createSpeisekarte() {
 createSpeisekarte();
 
 document.getElementById("orderButton").disabled = true;
+document.getElementById("delete-selected").disabled = true;

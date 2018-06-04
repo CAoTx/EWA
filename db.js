@@ -3,13 +3,13 @@
 var PizzaNames = [
 
     {
-        key: 0, value: "Salami"
+        key: 0, value: "Cheese"
     },
     {
-        key: 1, value: "Cheese"
+        key: 1, value: "Salami"
     },
     {
-        key: 2, value: "Peperoni"
+        key: 2, value: "Pepperoni"
     },
     {
         key: 3, value: "Tuna"
@@ -25,22 +25,22 @@ var PizzaNames = [
 var PizzaPrices = [
 
     {
-        key: 0, value: 6.00
+        key: 0, value: 5.00
     },
     {
-        key: 1, value: 5.00
+        key: 1, value: 5.57
     },
     {
-        key: 2, value: 6.90
+        key: 2, value: 5.94
     },
     {
-        key: 3, value: 6.00
+        key: 3, value: 6.46
     },
     {
-        key: 4, value: 6.00
+        key: 4, value: 5.86
     },
     {
-        key: 5, value: 6.50
+        key: 5, value: 6.13
     },
 ]
 

@@ -1,0 +1,28 @@
+div.mainDiv {
+    width: 60%;
+    display: inline-block;
+    margin-left: 20%;
+    min-width: 500px;
+    padding: 20px ;
+}
+
+body {
+    background-image: url("assets/B&W_Pizza.png");
+}
+
+section {
+    background-color: #888;
+}
+div {
+    background-color: #888;
+}
+
+header {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+div.topBuffer {
+    height: 100%;
+    float: top;
+}

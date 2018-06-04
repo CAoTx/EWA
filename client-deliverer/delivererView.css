@@ -3,24 +3,27 @@ header {
     color: #fff;
     width: 100%;
     padding: 1px 0;
-    
 }
+
 header h1 {
     font-weight: normal;
     margin: 0 16px;
-  }
+    
+}
 
 body {
-    background-color: white;
+    background-color: #999;
     margin: 3%;
 }
 
+
 article {
     display: inline-block;
-    width: 15em;
+    /*width: 15em;*/
     border-style: solid;
     margin: 2px;
     padding: 0.5em;
+    height: 200px;
 }
 
 h1 {
@@ -33,6 +36,7 @@ mainContent {
 
 .radioLabel {
     display:inline-block;
+    margin: 1%;
     vertical-align:top;
     text-align:center;
 

@@ -11,25 +11,17 @@ header h1 {
   }
 
 body {
-    background-color: white;
-    margin: 3%;
+    background-color:#999;
+    /*margin: 3%;*/
 }
 
 floatLeft {
     float: left;
 }
 
-.imgPizza {
-    width : 130px;
-    height : 130px;
-}
-
-div {
-    display: inline-block;
-}
 
 article {
-    display: inline-block;
+    display: block;
     /*width: 15em; */
     border-style: solid;
     /*margin: 2px;*/
@@ -37,25 +29,11 @@ article {
     width: 100%
 }
 
-a {
-    float: left;
-}
 
-span.price {
-    padding: 5px;
-}
-
-input.block_input {
-
-display: block;
-
-}
 
 select.shopping_cart {
-    width: 50%;
+    width: 100%;
 }
-
-
 
 section {
     display: inline-block;
@@ -69,16 +47,43 @@ section.orderButtons {
     display: inline-block;
     width: 45%;
 
-    margin-top: 100px;
+    margin-top: 70px;
+
+    min-width: 300px;
 
 }
 
 section.pizzaOffer {
     width: 45%;
-    display: block;
-    
-    margin-top: 100px;
+    display: inline-block;
+
+    margin-top: 70px;
+    min-width: 450px;
 }
+
+div.menuPizzaItem {
+    width: 45%;
+    min-width: 150px;
+    height: 150px;
+    display: inline-block;
+}
+
+
+.imgPizza {
+    display: inline-block;
+}
+
+span.price {
+    display: inline-block;
+    
+    padding: 5px;
+}
+
+span.name {
+    display: inline-block;
+    
+}
+
 
 
 section {
@@ -93,7 +98,7 @@ h1 {
 }
 
 mainContent {
-    display: block;;
+    display: block;
 }
 
 .radioLabel {
@@ -109,4 +114,17 @@ mainContent {
 
 .radioLabel * {
     display:inline-block;
+}
+
+table {
+    padding-left: 10px;
+}
+table th {
+    width: 5%;
+    padding-left: 10px;
+}
+
+table td {
+    width:5%;
+    text-align: center;
 }

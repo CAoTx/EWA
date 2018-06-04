@@ -4,15 +4,13 @@ window.addEventListener('load', function () {
     createContent();
 });
 
-function _getPrice(idx) {
-    console.log("Id = " + getPrice(idx).key);
-    console.log("Price = " + getName(idx).value);
-}
-
 function setStatus(idx, stat) {
     if (idx > 0 && idx < Orders.length) {
         Orders[idx].status = stat;
     }
+    
+    console.log("UPDATE bestellungen SET status= " + stat + " WHERE id = " + Orders[idx].ord_id);
+    
 }
 
 
