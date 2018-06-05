@@ -1,10 +1,11 @@
-"use strict "
+"use strict";
 
 window.addEventListener('load', function () {
     createContent();
 });
 
 function setStatus(idx, stat) {
+    "use strict";
     if (idx > 0 && idx < Orders.length) {
         Orders[idx].status = stat;
     }
@@ -15,8 +16,9 @@ function setStatus(idx, stat) {
 
 
 function createContent() {
+    "use strict";
 
-    alreadyPrinted = [];
+    var alreadyPrinted = [];
 
     for (var x = 0; x < Orders.length; x++) {
 
@@ -38,7 +40,7 @@ function createContent() {
 
 
             //To Pack multiple Pizzas to One Card
-            safearr = [];
+            var safearr = [];
 
             for (var i = 0; i < Orders.length; i++) {
                 if (Orders[i].ord_id == Orders[x].ord_id && i != x && i > x) {

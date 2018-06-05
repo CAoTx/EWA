@@ -1,4 +1,4 @@
-' use strict '
+"use strict";
 
 window.addEventListener('load', function () {
     createContent();
@@ -6,6 +6,7 @@ window.addEventListener('load', function () {
 });
 
 function setStatus(idx, stat) {
+    "use strict";
     if (idx > 0 && idx < Orders.length){
         Orders[idx].status = stat;
         console.log ("Baker setted status, ID:" + Orders[idx].ord_id + ", Status:"+stat);
@@ -15,8 +16,9 @@ function setStatus(idx, stat) {
 }
 
 function createContent() {
+    "use strict";
 
-    alreadyPrinted = [];
+    var alreadyPrinted = [];
 
     for (var x = 0; x < Orders.length; x++) {
 

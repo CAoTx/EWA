@@ -1,4 +1,4 @@
-' use strict '
+"use strict";
 
 var cart = document.getElementById("shopping_cart");
 var price = document.getElementById("preis");
@@ -8,7 +8,7 @@ var form = document.getElementById("pizzaOrderList");
 
 
 function addPzza(pizzanr) {
-
+	"use strict";
 
     if(cart.innerHTML.trim().localeCompare("<option>Warenkorb</option>") == 0) {
 
@@ -41,7 +41,7 @@ function addPzza(pizzanr) {
 
 
 function removeSelectedPizza() {
-
+	"use strict";
 	if(cart.selectedIndex == -1) return;
 
 	var selectedIndex = 2 * cart.selectedIndex;
@@ -54,7 +54,7 @@ function removeSelectedPizza() {
 	//remove the hidden input
 	cart.removeChild(cart.children[selectedIndex]);
 
-	console.log(preisdiff);
+	//update the price
 	_PriceField(preisdiff);
 
 	if(cart.innerHTML.localeCompare("") == 0) {
@@ -72,7 +72,7 @@ function removeSelectedPizza() {
 }
 
 function removeAllPizzas() {
-
+	"use strict";
 	cart.innerHTML = "";
 	_PriceField(0);
 
@@ -87,7 +87,7 @@ function removeAllPizzas() {
 }
 
 function _PriceField(pricediff) {
-
+	"use strict";
 
 	if(pricediff == 0) {
 		price.value = 0;}
@@ -105,7 +105,7 @@ function _PriceField(pricediff) {
 
 
 function createSpeisekarte() {
-
+	"use strict";
 	for(var i = 0; i < PizzaNames.length; i++) {
 		
 		var e_id = "pizza" + i;

@@ -1,4 +1,4 @@
-"use strict "
+"use strict";
 
 var PizzaNames = [
 
@@ -95,6 +95,7 @@ var Orders = [
 
 
 function getPrice(Pid) {
+    "use strict";
     if (Pid < 0) {
         return 0;
     }
@@ -102,6 +103,7 @@ function getPrice(Pid) {
 }
 
 function getName(Pid) {
+    "use strict";
     if (Pid < 0) {
         return "";
     }
@@ -109,12 +111,14 @@ function getName(Pid) {
 }
 
 function addOrder(data) {
+    "use strict";
     Orders.push({
         ord_id: data.ord_id, price: data.price, pizza: data.pizza, status: 1, addr: data.addr
     });
 }
 
 function nameToIndex(pizzaname) {
+    "use strict";
     for(var i = 0; i < PizzaNames.length; i++) {
         if(PizzaNames[i].value == (pizzaname)) return i;
     }
@@ -124,10 +128,12 @@ function nameToIndex(pizzaname) {
 
 
 function getLastWaiting() {
+    "use strict";
     return Orders.length;
 }
 
 function getWaitingOrders() {
+    "use strict";
     var arr = [];
     for (var i = 0; i < Orders.length; i++) {
         if (Orders[i].status < 5 && Orders[i].status > 2) {

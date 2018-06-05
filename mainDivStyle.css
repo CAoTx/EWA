@@ -26,3 +26,8 @@ div.topBuffer {
     height: 100%;
     float: top;
 }
+
+span.certificate {
+    float: bottom;
+    float: right;
+}
