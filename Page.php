@@ -56,7 +56,6 @@ abstract class Page
 		error_reporting (E_ALL);
 
 		// open database
-	
 		$this->database = new MySQLi('localhost', 'root', '', 'ewa');
 		// check connection to database
 	    if (mysqli_connect_errno())
@@ -64,10 +63,7 @@ abstract class Page
 		// set character encoding to UTF-8
 		if (!$this->database->set_charset("utf8"))
             throw new Exception("Fehler beim Laden des Zeichensatzes UTF-8: ".$this->database->error);
-            
-
-        $this->_database = new mysqli('localhost','root','','ewa') or die($mysqli->error)/* to do: create instance of class MySQLi */;
-  
+        
         session_start();
     }
     
@@ -78,8 +74,8 @@ abstract class Page
      */
     protected function __destruct()    
     {
-        $this->_database->close();
         // to do: close database
+        $this->_database->close();
     }
     
     /**
@@ -94,25 +90,26 @@ abstract class Page
      */
     protected function generatePageHeader($headline = "") 
     {
-        $headline = htmlspecialchars($headline);
-        header("Content-type: text/html; charset=UTF-8");
-        
-        echo "
-            <!DOCTYPE html>
-            <html lang='en'>
-            <head>
-              <title>$headline</title>
-                <meta charset='utf-8'>
-              <script src='../db.js' type='text/javascript'></script>
-              <script src=$headline.js type='text/javascript'> </script>
-              <link rel='stylesheet' type='text/css' href=$headline.css>
-              <link rel='stylesheet' type='text/css' href='../mainDivStyle.css'>
-             </head>
-        ";
-
 
         // to do: output common beginning of HTML code 
         // including the individual headline
+        $headline = htmlspecialchars($headline);
+        header("Content-type: text/html; charset=UTF-8");
+        
+        //echo the head section of the html document.
+        echo "<!DOCTYPE html>
+            <html lang='en'>
+            <head>
+                <title>$headline</title>
+                <meta charset='utf-8'>
+                <script src='../db.js' type='text/javascript'></script>
+                <script src=$headline.js type='text/javascript'> </script>
+                <link rel='stylesheet' type='text/css' href=$headline.css>
+                <link rel='stylesheet' type='text/css' href='../mainDivStyle.css'>
+            </head>
+            <body>";
+
+
     }
 
     /**
@@ -123,6 +120,7 @@ abstract class Page
     protected function generatePageFooter() 
     {
         // to do: output common end of HTML code
+        echo "</body></html>";
     }
 
     /**
