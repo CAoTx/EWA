@@ -141,7 +141,8 @@ function createSpeisekarte() {
 		var a = document.createElement("a");
 		a.setAttribute('onclick', "addPzza(" + i + ")");
 		a.setAttribute('href', "#");
-		a.setAttribute('id', getName(i));
+
+		a.setAttribute('id', getName(i).value);
 
 		var img = document.createElement("img");
 		img.setAttribute('src', "../assets/pizza.png");

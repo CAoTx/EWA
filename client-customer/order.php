@@ -20,8 +20,6 @@
 // to do: change name 'Order' throughout this file
 require_once '../Page.php';
 
-require_once '../db.php';
-
 
 /**
  * This is a template for top level classes, which represent 
@@ -39,10 +37,8 @@ class Order extends Page
 {
     // to do: declare reference variables for members 
     // representing substructures/blocks
-    
+    var $pizzas;
    
-
-
 
     /**
      * Instantiates members (to be defined above)->   
@@ -55,24 +51,14 @@ class Order extends Page
     {
         parent::__construct();
         // to do: instantiate members representing substructures/blocks
-        $pizzas;
 
-        $dom;
-        $menuSection;
-        $orderSection;
-        
-        
-        $pizzas = [];
 
         header("Content-type: text/html; charset=UTF-8");
         
-        echo "<link rel = 'stylesheet' type = 'text/css' href = '->/client-customer->css'>";
-
+        echo "<link rel = 'stylesheet' type = 'text/css' href = './client-customer.css'>";
         
-
+/*
         $dom = new DOMDocument("1->0", "utf-8");
-
-        /*$dom->addStyle( <?php include '->/client-customer->css'; ?> );*/
 
         $menuSection = $dom->createElement("section");
         $orderSection = $dom->createElement("section");
@@ -82,7 +68,7 @@ class Order extends Page
 
         
 
-        $results = (new mysqli('localhost','root','','ewa'))->query("select * from menu");
+        $results = $this->_database->query("select * from menu");
         
 
         if ($results->num_rows > 0) {
@@ -152,6 +138,7 @@ class Order extends Page
 
 
                 //echo "id_pizza: " -> $row["id_pizza"]-> " - name_pizza: " -> $row["name_pizza"]-> " " -> $row["price_pizza"]-> "<br>";
+*/
 /*              $pizza_item = 
               "<div>
                 <a href = # id = 'getName(" -> $counter -> ")'>
@@ -163,7 +150,7 @@ class Order extends Page
                 <span> </span>
               </div>";
 */           
-              $counter = $counter + 1;
+/*              $counter = $counter + 1;
               //echo $pizza_item;
             }
           }
@@ -173,7 +160,7 @@ class Order extends Page
 
 
           print $dom->saveHTML();
-
+*/
 
     }
     
@@ -198,6 +185,7 @@ class Order extends Page
     protected function getViewData()
     {
         // to do: fetch data for this view from the database
+        $this->pizzas = $this->_database->query("select * from menu");
     }
     
     /**
@@ -212,9 +200,61 @@ class Order extends Page
     protected function generateView() 
     {
         $this->getViewData();
-        $this->generatePageHeader('to do: change headline');
+        $this->generatePageHeader('orderView');
         // to do: call generateView() for all members
         // to do: output view of this page
+
+        //headline mit dem blauen balken und anfang der speisekarte section
+        echo <<<EOT
+        <header>
+            <h1>Order</h1>
+        </header>
+        <section id="speisekarte" class="pizzaOffer">
+EOT;
+
+        //anfang speisekarte mit echo in einem while loop,
+        //der über alle Pizzen im Menu iteriert
+        while($row = $this->pizzas->fetch_assoc()) {
+            $pizzaID = $row['id_pizza'];
+            $pizzaName = $row['name_pizza'];
+            $pizzaPrice = $row['price_pizza'];
+
+            echo <<<EOT
+            <div class="menuPizzaItem">
+                <a onclick="addPzza($pizzaID)" href='#' id="getName($pizzaID).value">
+                    <img src="../assets/pizza.png" width="80" height="80" alt="Pizza Img">
+                    <span class="name">$pizzaName</span>
+                    <span class="price">$pizzaPrice</span>
+                </a>
+            </div>
+EOT;
+        }
+        //beende die speisekarte section
+        echo <<<EOT
+        </section>
+EOT;
+
+
+        echo <<<EOT
+        <section id="bestellbuttons" class="orderButtons">
+        <form action="https://www.fbi.h-da.de/cgi-bin/Echo.pl" method="POST" id="pizzaOrderList">
+            <select id="shopping_cart" class="shopping_cart" multiple="" size="10"><option>Warenkorb</option> </select>
+            
+            <input type="text" class="block_input" id="adresse" name="adresse" placeholder="Lieferadresse angeben..." required="">
+            <input type="text" class="block_input" id="preis" name="preis" placeholder="0.00 €" readonly="" value="0.00">
+            
+            <input type="submit" value="Order" id="orderButton" disabled="">
+            <button type="reset" id="delete-all" onclick="removeAllPizzas()">Delete all</button>
+            <button type="button" id="delete-selected" onclick="removeSelectedPizza()" disabled="">Delete selected</button>
+          </form>
+
+        </section>
+        
+EOT;
+
+
+
+
         $this->generatePageFooter();
     }
     

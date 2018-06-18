@@ -103,8 +103,7 @@ abstract class Page
             <head>
                 <title>$headline</title>
                 <meta charset='utf-8'>
-                <script src='../db.js' type='text/javascript'></script>
-                <script src=$headline.js type='text/javascript'> </script>
+                <!--<script src=$headline.js type='text/javascript'> </script>-->
                 <link rel='stylesheet' type='text/css' href=$headline.css>
                 <link rel='stylesheet' type='text/css' href='../mainDivStyle.css'>
             </head>
@@ -123,7 +122,7 @@ EOT;
     protected function generatePageFooter() 
     {
         // to do: output common end of HTML code
-        echo "</div></body></html>";
+        echo "</div><script src=orderView.js type='text/javascript'> </script></body></html>";
     }
 
     /**

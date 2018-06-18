@@ -1,0 +1,130 @@
+header {
+    background: #0074D9;
+    color: #fff;
+    width: 100%;
+    padding: 1em 0;
+    
+}
+header h1 {
+    font-weight: normal;
+    margin: 0 1em;
+  }
+
+body {
+    background-color:#999;
+    /*margin: 3%;*/
+}
+
+floatLeft {
+    float: left;
+}
+
+
+article {
+    display: block;
+    /*width: 15em; */
+    border-style: solid;
+    /*margin: 2px;*/
+    /*padding: 0.5em;*/
+    width: 100%
+}
+
+
+
+select.shopping_cart {
+    width: 100%;
+}
+
+section {
+    display: inline-block;
+    width: 100%;
+    /*margin: 2px;*/
+    /*padding: 0.5em; */
+}
+
+section.orderButtons {
+
+    display: inline-block;
+    width: 45%;
+
+    margin-top: 7em;
+
+    min-width: 30em;
+
+}
+
+section.pizzaOffer {
+    width: 45%;
+    display: inline-block;
+
+    margin-top: 7em;
+    min-width: 45em;
+}
+
+div.menuPizzaItem {
+    width: 45%;
+    min-width: 15em;
+    height: 15em;
+    display: inline-block;
+}
+
+
+.imgPizza {
+    display: inline-block;
+}
+
+span.price {
+    display: inline-block;
+    
+    padding: 0.5em;
+}
+
+span.name {
+    display: inline-block;
+    
+}
+
+
+
+section {
+    display: inline-block;
+    width: 100%;
+    /*margin: 2px;*/
+    /*padding: 0.5em; */
+}
+
+h1 {
+    color: white;
+}
+
+mainContent {
+    display: block;
+}
+
+.radioLabel {
+    display:inline-block;
+    margin: 1%;
+    vertical-align:top;
+    text-align:center;
+
+    /* IE 7 and below */
+    *display:inline;
+    *zoom:1;
+}
+
+.radioLabel * {
+    display:inline-block;
+}
+
+table {
+    padding-left: 1em;
+}
+table th {
+    width: 5%;
+    padding-left: 1em;
+}
+
+table td {
+    width:5%;
+    text-align: center;
+}
