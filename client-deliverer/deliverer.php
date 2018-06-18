@@ -23,7 +23,7 @@ class Deliverer extends Page
     protected function getViewData()
     {
         $this->orders = $this->_database->query(
-            "SELECT * FROM ordered_pizza INNER JOIN orders INNER JOIN menu WHERE ordered_pizza.id_bestellung = orders.id_order AND status BETWEEN 3 AND 4 AND ordered_pizza.name_pizza = menu.name_pizza"
+            "SELECT * FROM ordered_pizza INNER JOIN orders INNER JOIN menu WHERE ordered_pizza.id_bestellung = orders.id_order AND ordered_pizza.status > 2 AND ordered_pizza.status < 5 AND ordered_pizza.name_pizza = menu.name_pizza"
         );
         if (!$this->orders->num_rows > 0) {
             $this->restFlag = true;
