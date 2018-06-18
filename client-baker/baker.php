@@ -19,6 +19,7 @@
 
 // to do: change name 'Baker' throughout this file
 require_once '../Page.php';
+require_once '../db.php';
 
 
 /**
@@ -76,12 +77,14 @@ class Baker extends Page
     protected function getViewData()
     {
         // to do: fetch data for this view from the database
-        $results = (new mysqli('localhost','root','','ewa'))->query("select * from orders");
-        //$this->orders = $parent::getDB()->query("select * from orders") or die("error");
-        if ($results->num_rows > 0) {
+        // $results = (new mysqli('localhost','root','','ewa'))->query("select * from ordered_pizza");
+        // $this->orders = $parent::getDB()->query("select * from orders") or die("error");
+        $this->orders = $this->_database->query("select * from ordered_pizza");
+        if (empty($this->orders)) {
             $counter = 0;
+            echo "Can't resolve query";
         }
-
+       
     }
     
     /**
@@ -96,8 +99,13 @@ class Baker extends Page
     protected function generateView() 
     {
         $this->getViewData();
-        $this->generatePageHeader('BAKERVIEW');
-        echo "<link rel = 'stylesheet' type = 'text/css' href = './client-customer.css'>";
+        $this->generatePageHeader('bakerView');
+
+        echo "
+        <link rel = 'stylesheet' type = 'text/css' href = './client-customer.css'>
+        ";
+
+
         // to do: call generateView() for all members
 
 

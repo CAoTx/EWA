@@ -101,11 +101,11 @@ abstract class Page
             <!DOCTYPE html>
             <html lang='en'>
             <head>
-              <title>$headline<title>
+              <title>$headline</title>
                 <meta charset='utf-8'>
               <script src='../db.js' type='text/javascript'></script>
-              <script src=".$headline."'.js' type='text/javascript'> </script>
-              <link rel='stylesheet' type='text/css' href=".$headline."'.css'>
+              <script src=$headline.js type='text/javascript'> </script>
+              <link rel='stylesheet' type='text/css' href=$headline.css>
               <link rel='stylesheet' type='text/css' href='../mainDivStyle.css'>
              </head>
         ";
