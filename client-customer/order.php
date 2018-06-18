@@ -252,9 +252,6 @@ EOT;
         
 EOT;
 
-
-
-
         $this->generatePageFooter();
     }
     
