@@ -1,6 +1,6 @@
 <?php	// UTF-8 marker äöüÄÖÜß€
 /**
- * Class PageTemplate for the exercises of the EWA lecture
+ * Class Status for the exercises of the EWA lecture
  * Demonstrates use of PHP including class and OO.
  * Implements Zend coding standards.
  * Generate documentation with Doxygen or phpdoc
@@ -16,7 +16,7 @@
  * @link     http://www.fbi.h-da.de 
  */
 
-// to do: change name 'PageTemplate' throughout this file
+// to do: change name 'Status' throughout this file
 require_once '../Page.php';
 
 /**
@@ -71,7 +71,7 @@ class Status extends Page
     protected function getViewData()
     {
         // to do: fetch data for this view from the database
-        $this->orders = = $this->_database->query("select * from orders");
+        $this->orders = $this->_database->query("select * from ordered_pizza");
     }
     
     /**
@@ -86,10 +86,77 @@ class Status extends Page
     protected function generateView() 
     {
         $this->getViewData();
-        $this->generatePageHeader('to do: change headline');
+        $this->generatePageHeader('statusView');
         // to do: call generateView() for all members
         // to do: output view of this page
-        $this->generatePageFooter();
+
+        echo <<<EOT
+        <header>
+            <h1>Order Status</h1>
+        </header>
+        <form class="order" action="http://www.fbi.h-da.de/cgi-bin/Echo.pl" method="POST">   
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Ordered</th>
+                  <th>Bakes</th>
+                  <th>Done</th>
+                  <th>On-the-Fly</th>
+                </tr>
+              </thead>
+              <tbody>
+EOT;
+        while($row = $this->orders->fetch_assoc()) {
+            $pizzaname = $row['name_pizza'];
+            
+            $check1 = "";
+            $check2 = "";
+            $check3 = "";
+            $check4 = "";
+
+            switch($row['status']) {
+                case "1":
+                $check1 = "checked";
+                break;
+                case "2":
+                $check2 = "checked";
+                break;
+                case "3":
+                $check3 = "checked";
+                break;
+                case "4":
+                $check3 = "checked";
+                break;
+                default:
+                break;
+            }
+
+            echo <<<EOT
+            <tr>
+                <td>$pizzaname</td>
+                <td><input type="radio" disabled="" $check1></td>
+                <td><input type="radio" disabled="" $check2></td>
+                <td><input type="radio" disabled="" $check3></td>
+                <td><input type="radio" disabled="" $check4></td>
+            </tr>
+EOT;
+        }
+            echo <<<EOT
+            </tbody>
+            </table>
+            <ul>
+                <li><a>U Want Some More ?! </a>
+                <a href="orderView.html"> Order additional Pizzas</a></li>
+             </ul>
+             </form>
+EOT;
+
+
+
+
+
+        $this->generatePageFooter("statusView");
     }
     
     /**
@@ -122,7 +189,7 @@ class Status extends Page
     public static function main() 
     {
         try {
-            $page = new PageTemplate();
+            $page = new Status();
             $page->processReceivedData();
             $page->generateView();
         }
@@ -135,7 +202,7 @@ class Status extends Page
 
 // This call is starting the creation of the page. 
 // That is input is processed and output is created.
-PageTemplate::main();
+Status::main();
 
 // Zend standard does not like closing php-tag!
 // PHP doesn't require the closing tag (it is assumed when the file ends). 
