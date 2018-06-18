@@ -5,11 +5,14 @@ require_once '../Page.php';
 class Deliverer extends Page
 {
    var $orders;
+   var $tescht;
+
     protected function __construct() 
     {
         parent::__construct();
         
         $this->orders = [];   
+        $this->tescht = [];
     }
 
     protected function __destruct() 
@@ -22,6 +25,10 @@ class Deliverer extends Page
         $this->orders = $this->_database->query(
             "SELECT * FROM ordered_pizza INNER JOIN orders WHERE ordered_pizza.id_bestellung = orders.id_order AND status BETWEEN 2 AND 5"
         );
+        $this->tescht = $this->_database->query(
+            "SELECT * FROM ordered_pizza INNER JOIN orders WHERE ordered_pizza.id_bestellung = orders.id_order AND status BETWEEN 2 AND 5 GROUP BY id_order"
+        );
+        // echo $this->tescht->fetch_assoc()['adress_order'];
         if (!$this->orders->num_rows > 0) {
             $counter = 0;
             echo "<h2>Can't resolve query\nGO HOME</h2>";
