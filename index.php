@@ -19,16 +19,12 @@
   <nav>
     <ul>
       <li>
-        <a href="client-customer/orderView.html">Order</a>
+        <a href="client-customer/order.php">Order</a>
       </li>
       <li>
-        <a href="client-customer/order.php">Order PHP</a>
+        <a href="client-customer/status.php">Order Status</a>
       </li>
       <li>
-        <a href="client-customer/statusView.html">Order Status</a>
-      </li>
-      <li>
-        <!-- <a href="client-baker/bakerView.html">Baker</a> -->
         <a href="client-baker/baker.php">Baker</a>
       </li>
       <li>

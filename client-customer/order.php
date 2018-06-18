@@ -16,10 +16,8 @@
  * @link     http://www->fbi->h-da->de 
  */
 
-
 // to do: change name 'Order' throughout this file
 require_once '../Page.php';
-
 
 /**
  * This is a template for top level classes, which represent 
@@ -38,7 +36,6 @@ class Order extends Page
     // to do: declare reference variables for members 
     // representing substructures/blocks
     var $pizzas;
-   
 
     /**
      * Instantiates members (to be defined above)->   
@@ -55,113 +52,6 @@ class Order extends Page
 
         header("Content-type: text/html; charset=UTF-8");
         
-        echo "<link rel = 'stylesheet' type = 'text/css' href = './client-customer.css'>";
-        
-/*
-        $dom = new DOMDocument("1->0", "utf-8");
-
-        $menuSection = $dom->createElement("section");
-        $orderSection = $dom->createElement("section");
-
-        $dom->appendChild($menuSection);
-        $dom->appendChild($orderSection);
-
-        
-
-        $results = $this->_database->query("select * from menu");
-        
-
-        if ($results->num_rows > 0) {
-            $counter = 0;
-            
-            // output data of each row
-            while($row = $results->fetch_assoc()) {
-
-                $a_pizza = $dom->createElement("a");
-
-                $img_pizza = $dom->createElement("img");
-                $img_pizza->setAttribute("src", "../assets/pizza.png");
-                $img_pizza->setAttribute("class", "imgPizza");
-                $img_pizza->setAttribute("height", "130");
-                $img_pizza->setAttribute("width", "130");
-
-                $a_pizza->appendChild($img_pizza);
-                $menuSection->appendChild($a_pizza);
-
-
-
-
-                $pizzaDiv = $dom->createElement("div");
-                $pizzaDiv->setAttribute("class", "menuPizzaItem");
-        
-                $a = $dom->createElement("a");
-                $a->setAttribute('onclick', "addPzza(" . $counter . ")");
-                $a->setAttribute('href', "#");
-                $a->setAttribute('id', getName($counter));
-        
-                $img = $dom->createElement("img");
-                $img->setAttribute('src', "../assets/pizza.png");
-                $img->setAttribute('width', "80");
-                $img->setAttribute('height', "80");
-                $img->setAttribute('alt', "Pizzaimg");
-        
-                
-                $spanpizza = $dom->createElement("span");
-                $spanpizza->setAttribute('class', "name");
-                $spanpizza->innerHTML = "" . getName($counter)->value;
-                
-        
-                $spanprice = $dom->createElement("span");
-                $spanprice->setAttribute('class', 'price');
-        
-                $pricestr = "" . getPrice($counter)->value;
-                
-                if($pricestr->includes("->")) {
-                    //"6.9"
-                    if($pricestr->lastIndexOf(".") == $pricestr->length - 2) $pricestr .= "0";
-                }
-                else {
-                    $pricestr .= ".00";
-                }
-                $pricestr .= " €";
-        
-                $spanprice->innerHTML = $pricestr;
-        
-        
-                $pizzaDiv->appendChild($a);
-                $a->appendChild($img);
-                $a->appendChild($spanpizza);
-                $a->appendChild($spanprice);
-        
-                $dom->getElementById("speisekarte")->appendChild($pizzaDiv);
-        
-
-
-                //echo "id_pizza: " -> $row["id_pizza"]-> " - name_pizza: " -> $row["name_pizza"]-> " " -> $row["price_pizza"]-> "<br>";
-*/
-/*              $pizza_item = 
-              "<div>
-                <a href = # id = 'getName(" -> $counter -> ")'>
-                  <img src = '->->/assets/pizza->png' width = '130' height = '130' alt = 'pizzaImg' onclick = 'addPzza(" -> $counter -> ")'> </img>
-                  <span class = 'name'>" -> $row['name_pizza'] -> "</span>
-                  <span class = 'price'> " -> $row['price_pizza'] ->"</span>
-                </a>
-                <span> </span>
-                <span> </span>
-              </div>";
-*/           
-/*              $counter = $counter + 1;
-              //echo $pizza_item;
-            }
-          }
-          else {
-            echo "0 results";
-          }
-
-
-          print $dom->saveHTML();
-*/
-
     }
     
     /**

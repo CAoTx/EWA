@@ -12,7 +12,6 @@ header h1 {
 
 body {
     background-color:#999;
-    /*margin: 3%;*/
 }
 
 floatLeft {
@@ -22,10 +21,7 @@ floatLeft {
 
 article {
     display: block;
-    /*width: 15em; */
     border-style: solid;
-    /*margin: 2px;*/
-    /*padding: 0.5em;*/
     width: 100%
 }
 
@@ -38,8 +34,6 @@ select.shopping_cart {
 section {
     display: inline-block;
     width: 100%;
-    /*margin: 2px;*/
-    /*padding: 0.5em; */
 }
 
 section.orderButtons {
@@ -48,23 +42,25 @@ section.orderButtons {
     width: 45%;
 
     margin-top: 7em;
-
     min-width: 30em;
+
 
 }
 
 section.pizzaOffer {
+
     width: 45%;
     display: inline-block;
 
-    margin-top: 7em;
-    min-width: 45em;
+    margin-top: 3em;
+    min-width: 30em;
+
 }
 
 div.menuPizzaItem {
-    width: 45%;
-    min-width: 15em;
-    height: 15em;
+    width: 48%;
+    min-width: 14em;
+    height: 5em;
     display: inline-block;
 }
 

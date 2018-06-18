@@ -61,7 +61,7 @@ function removeSelectedPizza() {
 	
 	console.log(toDelete);
 
-	for(var i = toDelete.length - 1; i >= 0; i = i -2) {
+	for(var i = toDelete.length - 1; i >= 0; i--) {
 
 		console.log(toDelete[i]);
 

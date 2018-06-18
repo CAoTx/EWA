@@ -56,7 +56,10 @@ EOT;
     {
         // to do: output common end of HTML code
         echo <<<EOT
-        "</div><script src=$headline.js type='text/javascript'> </script></body></html>";
+                </div>
+                <script src=$headline.js type='text/javascript'></script>
+            </body>
+        </html>
 EOT;
     }
     

@@ -17,7 +17,7 @@
  */
 
 // to do: change name 'PageTemplate' throughout this file
-require_once './Page.php';
+require_once '../Page.php';
 
 /**
  * This is a template for top level classes, which represent 
@@ -31,10 +31,11 @@ require_once './Page.php';
  * @author   Bernhard Kreling, <b.kreling@fbi.h-da.de> 
  * @author   Ralf Hahn, <ralf.hahn@h-da.de> 
  */
-class PageTemplate extends Page
+class Status extends Page
 {
     // to do: declare reference variables for members 
     // representing substructures/blocks
+    var $orders;
     
     /**
      * Instantiates members (to be defined above).   
@@ -70,6 +71,7 @@ class PageTemplate extends Page
     protected function getViewData()
     {
         // to do: fetch data for this view from the database
+        $this->orders = = $this->_database->query("select * from orders");
     }
     
     /**

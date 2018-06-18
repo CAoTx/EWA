@@ -106,7 +106,7 @@ EOT;
                     </section>
 EOT;
 
-        $this->generatePageFooter();
+        $this->generatePageFooter("bakerView");
     }
     protected function processReceivedData() 
     {

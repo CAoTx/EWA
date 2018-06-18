@@ -45,7 +45,7 @@ section {
 section.orderButtons {
 
     display: inline-block;
-    width: 45%;
+    width: 40%;
 
     margin-top: 7em;
 
@@ -54,7 +54,7 @@ section.orderButtons {
 }
 
 section.pizzaOffer {
-    width: 45%;
+    width: 20%;
     display: inline-block;
 
     margin-top: 7em;
