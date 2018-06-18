@@ -109,6 +109,7 @@ abstract class Page
                 <link rel='stylesheet' type='text/css' href='../mainDivStyle.css'>
             </head>
             <body>
+                <div class="mainDiv">
 EOT;
 
 
@@ -122,7 +123,7 @@ EOT;
     protected function generatePageFooter() 
     {
         // to do: output common end of HTML code
-        echo "</body></html>";
+        echo "</div></body></html>";
     }
 
     /**
