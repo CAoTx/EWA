@@ -28,8 +28,8 @@
         <a href="client-customer/statusView.html">Order Status</a>
       </li>
       <li>
-        <a href="client-baker/bakerView.html">Baker</a>
-        <!-- <a href="client-baker/baker.php">Baker</a>-->
+        <!-- <a href="client-baker/bakerView.html">Baker</a> -->
+        <a href="client-baker/baker.php">Baker</a>
       </li>
       <li>
         <a href="client-deliverer/delivererView.html">Deliverer</a>

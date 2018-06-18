@@ -39,7 +39,7 @@ abstract class Page
      * Reference to the MySQLi-Database that is
      * accessed by all operations of the class.
      */
-    protected $_database = null;
+    protected $database = null;  
     
     // --- OPERATIONS ---
     
@@ -52,7 +52,22 @@ abstract class Page
      */
     protected function __construct() 
     {
+        // activate full error checking
+		error_reporting (E_ALL);
+
+		// open database
+	
+		$this->database = new MySQLi('localhost', 'root', '', 'ewa');
+		// check connection to database
+	    if (mysqli_connect_errno())
+	        throw new Exception("Keine Verbindung zur Datenbank: ".mysqli_connect_error());
+		// set character encoding to UTF-8
+		if (!$this->database->set_charset("utf8"))
+            throw new Exception("Fehler beim Laden des Zeichensatzes UTF-8: ".$this->database->error);
+            
+
         $this->_database = new mysqli('localhost','root','','ewa') or die($mysqli->error)/* to do: create instance of class MySQLi */;
+  
         session_start();
     }
     
@@ -82,6 +97,20 @@ abstract class Page
         $headline = htmlspecialchars($headline);
         header("Content-type: text/html; charset=UTF-8");
         
+        echo "
+            <!DOCTYPE html>
+            <html lang='en'>
+            <head>
+              <title>$headline<title>
+                <meta charset='utf-8'>
+              <script src='../db.js' type='text/javascript'></script>
+              <script src=".$headline."'.js' type='text/javascript'> </script>
+              <link rel='stylesheet' type='text/css' href=".$headline."'.css'>
+              <link rel='stylesheet' type='text/css' href='../mainDivStyle.css'>
+             </head>
+        ";
+
+
         // to do: output common beginning of HTML code 
         // including the individual headline
     }
@@ -111,6 +140,11 @@ abstract class Page
                 ("Bitte schalten Sie magic_quotes_gpc in php.ini aus!");
         }
     }
+
+    protected function getDB(){
+        return $this->_database;
+    }
+
 } // end of class
 
 // Zend standard does not like closing php-tag!

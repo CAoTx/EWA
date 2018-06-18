@@ -1,6 +1,6 @@
 <?php	// UTF-8 marker äöüÄÖÜß€
 /**
- * Class Order for the exercises of the EWA lecture
+ * Class Baker for the exercises of the EWA lecture
  * Demonstrates use of PHP including class and OO.
  * Implements Zend coding standards.
  * Generate documentation with Doxygen or phpdoc
@@ -17,7 +17,7 @@
  */
 
 
-// to do: change name 'Order' throughout this file
+// to do: change name 'Baker' throughout this file
 require_once '../Page.php';
 
 
@@ -33,15 +33,11 @@ require_once '../Page.php';
  * @author   Bernhard Kreling, <b.kreling@fbi.h-da.de> 
  * @author   Ralf Hahn, <ralf.hahn@h-da.de> 
  */
-class Order extends Page
+class Baker extends Page
 {
     // to do: declare reference variables for members 
     // representing substructures/blocks
-    
-   
-
-
-
+   var $orders;
     /**
      * Instantiates members (to be defined above).   
      * Calls the constructor of the parent i.e. page class.
@@ -53,48 +49,11 @@ class Order extends Page
     {
         parent::__construct();
         // to do: instantiate members representing substructures/blocks
-
-        $orders = [];
-
-        header("Content-type: text/html; charset=UTF-8");
-        
-        echo "<link rel = 'stylesheet' type = 'text/css' href = './client-customer.css'>";
-        
-
-        $results = (new mysqli('localhost','root','','ewa'))->query("select * from menu");
-        
-
-        if ($results->num_rows > 0) {
-            $counter = 0;
+        //MAYBE DOESNT WORK //CHECK SQLQUERY
+        $this->orders = [];
             
-            // output data of each row
-            while($row = $results->fetch_assoc()) {
-
-                //echo "id_pizza: " . $row["id_pizza"]. " - name_pizza: " . $row["name_pizza"]. " " . $row["price_pizza"]. "<br>";
-             $pizza_item = 
-              "<div>
-                <a href = # id = 'getName(" . $counter . ")'>
-                  <img src = '../assets/pizza.png' width = '130' height = '130' alt = 'pizzaImg' onclick = 'addPzza(" . $counter . ")'> </img>
-                  <span class = 'name'>" . $row['name_pizza'] . "</span>
-                  <span class = 'price'> " . $row['price_pizza'] ."</span>
-                </a>
-                <span> </span>
-                <span> </span>
-              </div>";
-
-              $counter = $counter + 1;
-              echo $pizza_item;
-            }
-          }
-          else {
-            echo "0 results";
-          }
-
-
-          print $dom->saveHTML();
-
-
     }
+
     
     /**
      * Cleans up what ever is needed.   
@@ -117,7 +76,11 @@ class Order extends Page
     protected function getViewData()
     {
         // to do: fetch data for this view from the database
-
+        $results = (new mysqli('localhost','root','','ewa'))->query("select * from orders");
+        //$this->orders = $parent::getDB()->query("select * from orders") or die("error");
+        if ($results->num_rows > 0) {
+            $counter = 0;
+        }
 
     }
     
@@ -133,8 +96,12 @@ class Order extends Page
     protected function generateView() 
     {
         $this->getViewData();
-        $this->generatePageHeader('to do: change headline');
+        $this->generatePageHeader('BAKERVIEW');
+        echo "<link rel = 'stylesheet' type = 'text/css' href = './client-customer.css'>";
         // to do: call generateView() for all members
+
+
+
         // to do: output view of this page
         $this->generatePageFooter();
     }
@@ -169,7 +136,7 @@ class Order extends Page
     public static function main() 
     {
         try {
-            $page = new Order();
+            $page = new Baker();
             $page->processReceivedData();
             $page->generateView();
         }
@@ -188,7 +155,7 @@ class Order extends Page
 */
 // This call is starting the creation of the page. 
 // That is input is processed and output is created.
-Order::main();
+Baker::main();
 
 // Zend standard does not like closing php-tag!
 // PHP doesn't require the closing tag (it is assumed when the file ends). 
