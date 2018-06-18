@@ -135,21 +135,21 @@ EOT;
                     <form action='action.php' method='POST'>
 
                     <label class='radioLabel'>Ordered
-                    <input type='radio' value='1' onclick='this.form.submit();' name='radioinput' . $check1 . >
+                    <input type='radio' value='1' onclick='this.form.submit();' name='radioinput'    $check1   >
                     <input type='hidden' value=$pizzaID name='pizzaID'>
                     <input type='hidden' value=$bestellID name='bestellID'>
                     <span class='radioSpan'></span>
                     </label>
 
                     <label class='radioLabel'>Baking
-                    <input type='radio' value='2' onclick='this.form.submit();' name='radioinput ' . $check2 . >
+                    <input type='radio' value='2' onclick='this.form.submit();' name='radioinput'  $check2  >
                     <input type='hidden' value=$pizzaID name='pizzaID'>
                     <input type='hidden' value=$bestellID name='bestellID'>
                     <span class='radioSpan'></span>
                     </label>
 
                     <label class='radioLabel'>Ready
-                    <input type='radio' value='3' onclick='this.form.submit();' name='radioinput ' . $check3 . >
+                    <input type='radio' value='3' onclick='this.form.submit();' name='radioinput'  $check3  >
                     <input type='hidden' value=$pizzaID name='pizzaID'>
                     <input type='hidden' value=$bestellID name='bestellID'>
                     <span class='radioSpan'></span>
