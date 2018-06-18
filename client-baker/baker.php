@@ -76,15 +76,11 @@ class Baker extends Page
      */
     protected function getViewData()
     {
-        // to do: fetch data for this view from the database
-        // $results = (new mysqli('localhost','root','','ewa'))->query("select * from ordered_pizza");
-        // $this->orders = $parent::getDB()->query("select * from orders") or die("error");
         $this->orders = $this->_database->query("select * from ordered_pizza");
         if (empty($this->orders)) {
             $counter = 0;
             echo "Can't resolve query";
         }
-       
     }
     
     /**
@@ -101,16 +97,8 @@ class Baker extends Page
         $this->getViewData();
         $this->generatePageHeader('bakerView');
 
-        echo "
-        <link rel = 'stylesheet' type = 'text/css' href = './client-customer.css'>
-        ";
+       
 
-
-        // to do: call generateView() for all members
-
-
-
-        // to do: output view of this page
         $this->generatePageFooter();
     }
     

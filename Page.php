@@ -39,7 +39,7 @@ abstract class Page
      * Reference to the MySQLi-Database that is
      * accessed by all operations of the class.
      */
-    protected $database = null;  
+    protected $_database = null;  
     
     // --- OPERATIONS ---
     
@@ -56,12 +56,12 @@ abstract class Page
 		error_reporting (E_ALL);
 
 		// open database
-		$this->database = new MySQLi('localhost', 'root', '', 'ewa');
+		$this->_database = new MySQLi('localhost', 'root', '', 'ewa');
 		// check connection to database
 	    if (mysqli_connect_errno())
 	        throw new Exception("Keine Verbindung zur Datenbank: ".mysqli_connect_error());
 		// set character encoding to UTF-8
-		if (!$this->database->set_charset("utf8"))
+		if (!$this->_database->set_charset("utf8"))
             throw new Exception("Fehler beim Laden des Zeichensatzes UTF-8: ".$this->database->error);
         
         session_start();
@@ -97,7 +97,8 @@ abstract class Page
         header("Content-type: text/html; charset=UTF-8");
         
         //echo the head section of the html document.
-        echo "<!DOCTYPE html>
+        echo <<<EOT
+        <!DOCTYPE html>
             <html lang='en'>
             <head>
                 <title>$headline</title>
@@ -107,7 +108,8 @@ abstract class Page
                 <link rel='stylesheet' type='text/css' href=$headline.css>
                 <link rel='stylesheet' type='text/css' href='../mainDivStyle.css'>
             </head>
-            <body>";
+            <body>
+EOT;
 
 
     }
