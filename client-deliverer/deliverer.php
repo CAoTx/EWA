@@ -23,10 +23,10 @@ class Deliverer extends Page
     protected function getViewData()
     {
         $this->orders = $this->_database->query(
-            "SELECT * FROM ordered_pizza INNER JOIN orders WHERE ordered_pizza.id_bestellung = orders.id_order AND status BETWEEN 2 AND 5"
+            "SELECT * FROM ordered_pizza INNER JOIN orders WHERE ordered_pizza.id_bestellung = orders.id_order AND status BETWEEN 2 AND 4"
         );
         $this->tescht = $this->_database->query(
-            "SELECT * FROM ordered_pizza INNER JOIN orders WHERE ordered_pizza.id_bestellung = orders.id_order AND status BETWEEN 2 AND 5 GROUP BY id_order"
+            "SELECT * FROM ordered_pizza INNER JOIN orders WHERE ordered_pizza.id_bestellung = orders.id_order AND status BETWEEN 2 AND 4 GROUP BY id_order"
         );
         // echo $this->tescht->fetch_assoc()['adress_order'];
         if (!$this->orders->num_rows > 0) {
