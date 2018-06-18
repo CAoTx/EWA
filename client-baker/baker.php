@@ -5,11 +5,13 @@ require_once '../Page.php';
 class Baker extends Page
 {
    var $orders;
+   var $restFlag;
     protected function __construct() 
     {
         parent::__construct();
 
         $this->orders = [];   
+        $this->restFlag = false;
     }
 
     protected function __destruct() 
@@ -21,8 +23,7 @@ class Baker extends Page
     {
         $this->orders = $this->_database->query("SELECT * FROM ordered_pizza WHERE status BETWEEN 0 AND 2");
         if (!$this->orders->num_rows > 0) {
-            $counter = 0;
-            echo "<h2>Can't resolve query\nGO HOME</h2>";
+            $this->restFlag = true;
         }
     }
     
@@ -39,12 +40,21 @@ class Baker extends Page
         $this->getViewData();
         $this->generatePageHeader('bakerView');
 
-
         //OUTPUT
+            if($this->restFlag){
         echo <<<EOT
-                    <header>
-                        <h1>Baker</h1>
-                    </header>
+        <header>
+                <h1>Baker - Rest Buddy, Nothing to Do</h1>
+        </header>
+EOT;
+        }else{
+        echo <<<EOT
+        <header>
+                <h1>Baker</h1>
+        </header>
+EOT;
+            }
+        echo <<<EOT
                     <section> 
 EOT;
             while($row = $this->orders->fetch_assoc()){
@@ -61,8 +71,9 @@ EOT;
                     case "3": 
                     $check1 = ""; $check2 = ""; $check3 = "checked=''"; break;
                 }
-
+                    
                 echo "
+            
                     <article> 
                     <p>$pizzaname</p>
                     <p>$pizzaID</p>

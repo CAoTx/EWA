@@ -74,9 +74,12 @@ EOT;
                     $check1 = ""; $check2 = "checked=''"; $check3 = ""; break;
                     case "5": 
                     $check1 = ""; $check2 = ""; $check3 = "checked=''"; break;
+                    default : 
+                    $check1 = ""; $check2 = ""; $check3 = "";
+                    echo "<script>console.log('default');</script>";
                 }
 
-                echo "
+                echo <<<EOT
                     <article> 
                     <p>$pizzaname</p>
                     <p>$pizzaID</p>
@@ -87,24 +90,24 @@ EOT;
                     <input type='hidden' value=$bestellID name='bestellID'>
 
                     <label class='radioLabel'>Ready
-                    <input type='radio' value='3' onclick='this.form.submit();' name='radioinput'    $check1   >
+                    <input type='radio' value='3' onclick='this.form.submit();' name='radioinput' $check1   >
                     <span class='radioSpan'></span>
                     </label>
 
                     <label class='radioLabel'>Fly
-                    <input type='radio' value='4' onclick='this.form.submit();' name='radioinput'  $check2  >
+                    <input type='radio' value='4' onclick='this.form.submit();' name='radioinput' $check2  >
                     <span class='radioSpan'></span>
                     </label>
 
                     <label class='radioLabel'>Done
-                    <input type='radio' value='5' onclick='this.form.submit();' name='radioinput'  $check3  >
+                    <input type='radio' value='5' onclick='this.form.submit();' name='radioinput' $check3  >
                     <span class='radioSpan'></span>
                     </label>
 
                     </form>
 
                     </article>
-                ";
+EOT;
             }
         echo <<<EOT
                     </section>
