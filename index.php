@@ -22,6 +22,9 @@
         <a href="client-customer/orderView.html">Order</a>
       </li>
       <li>
+        <a href="client-customer/order.php">Order PHP</a>
+      </li>
+      <li>
         <a href="client-customer/statusView.html">Order Status</a>
       </li>
       <li>

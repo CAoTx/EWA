@@ -2,12 +2,12 @@ header {
     background: #0074D9;
     color: #fff;
     width: 100%;
-    padding: 1px 0;
+    padding: 1em 0;
     
 }
 header h1 {
     font-weight: normal;
-    margin: 0 16px;
+    margin: 0 1em;
   }
 
 body {
@@ -47,9 +47,9 @@ section.orderButtons {
     display: inline-block;
     width: 45%;
 
-    margin-top: 70px;
+    margin-top: 7em;
 
-    min-width: 300px;
+    min-width: 30em;
 
 }
 
@@ -57,14 +57,14 @@ section.pizzaOffer {
     width: 45%;
     display: inline-block;
 
-    margin-top: 70px;
-    min-width: 450px;
+    margin-top: 7em;
+    min-width: 45em;
 }
 
 div.menuPizzaItem {
     width: 45%;
-    min-width: 150px;
-    height: 150px;
+    min-width: 15em;
+    height: 15em;
     display: inline-block;
 }
 
@@ -76,7 +76,7 @@ div.menuPizzaItem {
 span.price {
     display: inline-block;
     
-    padding: 5px;
+    padding: 0.5em;
 }
 
 span.name {
@@ -117,11 +117,11 @@ mainContent {
 }
 
 table {
-    padding-left: 10px;
+    padding-left: 1em;
 }
 table th {
     width: 5%;
-    padding-left: 10px;
+    padding-left: 1em;
 }
 
 table td {

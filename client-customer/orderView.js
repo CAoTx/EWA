@@ -44,18 +44,44 @@ function removeSelectedPizza() {
 	"use strict";
 	if(cart.selectedIndex == -1) return;
 
+	var toDelete = [];
+		
+	for ( var i = 0, len = cart.options.length; i < len; i = i + 2 ) {
+        var opt = cart.options[i]; //
+
+		
+        if ( opt.selected ) {
+			
+			toDelete.push(i);
+        }
+	}
+	
+
+	for(var i = toDelete.length - 1; i >= 0; i = i -2) {
+
+		console.log(toDelete[i]);
+
+		var preisdiff = -1 * getPrice( nameToIndex( cart.children[ toDelete[ i ] ].value ) ).value;
+		cart.removeChild(cart.children[ toDelete[ i ] ]);
+		cart.removeChild(cart.children[ toDelete[ i ] ]);
+		
+		_PriceField(preisdiff);
+
+	}
+
+
 	var selectedIndex = 2 * cart.selectedIndex;
 
 	var preisdiff = -1 * getPrice( nameToIndex( cart.children[selectedIndex].value ) ).value;
 	
 	//remove the <option> element
-	cart.removeChild(cart.children[selectedIndex]);
+	//cart.removeChild(cart.children[selectedIndex]);
 
 	//remove the hidden input
-	cart.removeChild(cart.children[selectedIndex]);
+	//cart.removeChild(cart.children[selectedIndex]);
 
 	//update the price
-	_PriceField(preisdiff);
+	//_PriceField(preisdiff);
 
 	if(cart.innerHTML.localeCompare("") == 0) {
 		var warenkorb = document.createElement("option");
@@ -108,8 +134,7 @@ function createSpeisekarte() {
 	"use strict";
 	for(var i = 0; i < PizzaNames.length; i++) {
 		
-		var e_id = "pizza" + i;
-
+		
 		var pizzaDiv = document.createElement("div");
 		pizzaDiv.setAttribute("class", "menuPizzaItem");
 
