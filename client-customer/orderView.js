@@ -17,6 +17,7 @@ function addPzza(pizzaname, pizzapreis) {
 	}
 	
 	var pizza = document.createElement("option");
+	pizza.setAttribute("price", pizzapreis);
 	pizza.innerHTML = pizzaname;//getName(pizzanr).value;
 	
 
@@ -46,12 +47,13 @@ function removeSelectedPizza() {
 
 	var toDelete = [];
 		
-	for ( var i = 0, len = cart.options.length; i < len; i = i + 2 ) {
+
+	for ( var i = 0; i < cart.options.length; i++ ) {
         var opt = cart.options[i];
 
         if ( opt.selected ) {
 			
-			toDelete.push(i);
+			toDelete.push(i * 2);
         }
 	}
 	
@@ -60,18 +62,21 @@ function removeSelectedPizza() {
 
 		console.log(toDelete[i]);
 
-		var preisdiff = -1 * getPrice( nameToIndex( cart.children[ toDelete[ i ] ].value ) ).value;
+		/*var preisdiff = -1 * getPrice( nameToIndex( cart.children[ toDelete[ i ] ].value ) ).value;
 		cart.removeChild(cart.children[ toDelete[ i ] ]);
 		cart.removeChild(cart.children[ toDelete[ i ] ]);
 		
 		_PriceField(preisdiff);
+		*/
 
+		_PriceField(-1 * cart.removeChild(cart.children[ toDelete[ i ] ]));
+		cart.removeChild(cart.children[ toDelete[ i ] ]);
 	}
 
 
-	var selectedIndex = 2 * cart.selectedIndex;
+	//var selectedIndex = 2 * cart.selectedIndex;
 
-	var preisdiff = -1 * getPrice( nameToIndex( cart.children[selectedIndex].value ) ).value;
+	//var preisdiff = -1 * getPrice( nameToIndex( cart.children[selectedIndex].value ) ).value;
 	
 	//remove the <option> element
 	//cart.removeChild(cart.children[selectedIndex]);
