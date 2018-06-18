@@ -19,7 +19,6 @@
 
 // to do: change name 'Baker' throughout this file
 require_once '../Page.php';
-require_once '../db.php';
 
 
 /**
@@ -77,7 +76,7 @@ class Baker extends Page
     protected function getViewData()
     {
         $this->orders = $this->_database->query("select * from ordered_pizza");
-        if (empty($this->orders)) {
+        if (!$this->orders->num_rows > 0) {
             $counter = 0;
             echo "Can't resolve query";
         }
@@ -94,10 +93,76 @@ class Baker extends Page
      */
     protected function generateView() 
     {
+       $pizzaname;
+       $pizzaID;
+       $bestellID;
+       $status;
+       $check1;
+       $check2;
+       $check3;
+
         $this->getViewData();
         $this->generatePageHeader('bakerView');
 
-       
+
+        //OUTPUT
+        echo <<<EOT
+                    <header>
+                        <h1>Baker</h1>
+                    </header>
+                    <section> 
+EOT;
+            while($row = $this->orders->fetch_assoc()){
+                $pizzaname = $row['name_pizza'];
+                $pizzaID = $row['id_orderedpizza'];
+                $bestellID = $row['id_bestellung'];
+                $status = $row['status'];
+
+                switch($status){
+                    case "1": 
+                    $check1 = "checked=''"; $check2 = ""; $check3 = ""; break;
+                    case "2": 
+                    $check1 = ""; $check2 = "checked=''"; $check3 = ""; break;
+                    case "3": 
+                    $check1 = ""; $check2 = ""; $check3 = "checked=''"; break;
+                }
+
+                echo "
+                    <article> 
+                    <p>$pizzaname</p>
+                    <p>$pizzaID</p>
+
+                    <form action='action.php' method='POST'>
+
+                    <label class='radioLabel'>Ordered
+                    <input type='radio' value='1' onclick='this.form.submit();' name='radioinput' . $check1 . >
+                    <input type='hidden' value=$pizzaID name='pizzaID'>
+                    <input type='hidden' value=$bestellID name='bestellID'>
+                    <span class='radioSpan'></span>
+                    </label>
+
+                    <label class='radioLabel'>Baking
+                    <input type='radio' value='2' onclick='this.form.submit();' name='radioinput ' . $check2 . >
+                    <input type='hidden' value=$pizzaID name='pizzaID'>
+                    <input type='hidden' value=$bestellID name='bestellID'>
+                    <span class='radioSpan'></span>
+                    </label>
+
+                    <label class='radioLabel'>Ready
+                    <input type='radio' value='3' onclick='this.form.submit();' name='radioinput ' . $check3 . >
+                    <input type='hidden' value=$pizzaID name='pizzaID'>
+                    <input type='hidden' value=$bestellID name='bestellID'>
+                    <span class='radioSpan'></span>
+                    </label>
+
+                    </form>
+
+                    </article>
+                ";
+            }
+        echo <<<EOT
+                    </section>
+EOT;
 
         $this->generatePageFooter();
     }

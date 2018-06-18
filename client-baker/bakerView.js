@@ -1,10 +1,12 @@
 "use strict";
 
 window.addEventListener('load', function () {
-    createContent();
+  //  createContent();
     return;
 });
 
+
+//idx = bestell_pizza_id
 function setStatus(idx, stat) {
     "use strict";
     if (idx > 0 && idx < Orders.length){
