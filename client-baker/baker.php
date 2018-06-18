@@ -44,7 +44,8 @@ class Baker extends Page
             if($this->restFlag){
         echo <<<EOT
         <header>
-                <h1>Baker - Rest Buddy, Nothing to Do</h1>
+        <h1>Baker</h1>
+        <h3>Rest Buddy, Nothing to Do</h3>
         </header>
 EOT;
         }else{
@@ -70,13 +71,17 @@ EOT;
                     $check1 = ""; $check2 = "checked=''"; $check3 = ""; break;
                     case "3": 
                     $check1 = ""; $check2 = ""; $check3 = "checked=''"; break;
+                    default : 
+                    $check1 = ""; $check2 = ""; $check3 = "";
+                    echo "<script>console.log('ID:' + $bestellID + ', case: default');</script>";
+                    break;
                 }
                     
-                echo "
+                echo <<<EOT
             
                     <article> 
                     <p>$pizzaname</p>
-                    <p>$pizzaID</p>
+                    <p>PizzaID: $pizzaID</p>
 
                     <form action='action.php' method='POST'>
                     <input type='hidden' value=$pizzaID name='pizzaID'>
@@ -100,7 +105,7 @@ EOT;
                     </form>
 
                     </article>
-                ";
+EOT;
             }
         echo <<<EOT
                     </section>

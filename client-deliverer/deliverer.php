@@ -5,14 +5,14 @@ require_once '../Page.php';
 class Deliverer extends Page
 {
    var $orders;
-   var $tescht;
+   var $restFlag;
 
     protected function __construct() 
     {
         parent::__construct();
         
         $this->orders = [];   
-        $this->tescht = [];
+        $this->restFlag = false;
     }
 
     protected function __destruct() 
@@ -23,15 +23,10 @@ class Deliverer extends Page
     protected function getViewData()
     {
         $this->orders = $this->_database->query(
-            "SELECT * FROM ordered_pizza INNER JOIN orders WHERE ordered_pizza.id_bestellung = orders.id_order AND status BETWEEN 2 AND 4"
+            "SELECT * FROM ordered_pizza INNER JOIN orders INNER JOIN menu WHERE ordered_pizza.id_bestellung = orders.id_order AND status BETWEEN 3 AND 4 AND ordered_pizza.name_pizza = menu.name_pizza"
         );
-        $this->tescht = $this->_database->query(
-            "SELECT * FROM ordered_pizza INNER JOIN orders WHERE ordered_pizza.id_bestellung = orders.id_order AND status BETWEEN 2 AND 4 GROUP BY id_order"
-        );
-        // echo $this->tescht->fetch_assoc()['adress_order'];
         if (!$this->orders->num_rows > 0) {
-            $counter = 0;
-            echo "<h2>Can't resolve query\nGO HOME</h2>";
+            $this->restFlag = true;
         }
     }
     
@@ -39,9 +34,10 @@ class Deliverer extends Page
     {
         $pizzaname;
         $pizzaID;
-        $bestellID;
+        $orderID;
         $status;
         $adress;
+        $price;
 
        $check1;
        $check2;
@@ -52,18 +48,30 @@ class Deliverer extends Page
 
 
         //OUTPUT
-        echo <<<EOT
-                    <header>
-                        <h1>Deliverer</h1>
-                    </header>
-                    <section> 
+        if($this->restFlag){
+            echo <<<EOT
+            <header>
+                    <h1>Deliverer</h1>
+                    <h3>Rest Buddy, Nothing to Do</h3>
+            </header>
+EOT;
+            }else{
+            echo <<<EOT
+            <header>
+                    <h1>Deliverer</h1>
+            </header>
+EOT;
+                }
+            echo <<<EOT
+                        <section> 
 EOT;
             while($row = $this->orders->fetch_assoc()){
                 $pizzaname = $row['name_pizza'];
                 $pizzaID = $row['id_orderedpizza'];
-                $bestellID = $row['id_bestellung'];
+                $orderID = $row['id_bestellung'];
                 $status = $row['status'];
                 $adress = $row['adress_order'];
+                $price = $row['price_pizza'];
                 
 
 
@@ -76,18 +84,20 @@ EOT;
                     $check1 = ""; $check2 = ""; $check3 = "checked=''"; break;
                     default : 
                     $check1 = ""; $check2 = ""; $check3 = "";
-                    echo "<script>console.log('default');</script>";
+                    echo "<script>console.log('ID:' + $orderID + ', case: default');</script>";
+                    break;
                 }
 
                 echo <<<EOT
                     <article> 
-                    <p>$pizzaname</p>
-                    <p>$pizzaID</p>
+                    <p>$pizzaname , $price €</p>
+                    <p>PizzaID: $pizzaID</p>
+                    <p>OrderID: $orderID</p>
                     <p>$adress</p>
 
                     <form action='action.php' method='POST'>
                     <input type='hidden' value=$pizzaID name='pizzaID'>
-                    <input type='hidden' value=$bestellID name='bestellID'>
+                    <input type='hidden' value=$orderID name='bestellID'>
 
                     <label class='radioLabel'>Ready
                     <input type='radio' value='3' onclick='this.form.submit();' name='radioinput' $check1   >

@@ -50,7 +50,7 @@ EOT;
 
     protected function generatePageFooter($headline = "") 
     {
-        if ($headline != "delivererView" && $headline != "bakerView"){
+        if ($headline == 'orderView'){
         echo <<<EOT
                 </div>
                 <script src=$headline.js type='text/javascript'></script>
