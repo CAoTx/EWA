@@ -27,6 +27,7 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `menu`
 --
+DROP TABLR 'menu';
 
 CREATE TABLE `menu` (
   `id_pizza` int(11) NOT NULL,

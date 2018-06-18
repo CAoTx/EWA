@@ -19,7 +19,7 @@ body {
 
 article {
     display: inline-block;
-    /*width: 15em;*/
+    width: 12em;
     border-style: solid;
     margin: 2px;
     padding: 0.5em;

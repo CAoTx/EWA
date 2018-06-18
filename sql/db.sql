@@ -40,7 +40,7 @@ CREATE TABLE `menu` (
 -- Table structure for table `order`
 --
 
-CREATE TABLE `order` (
+CREATE TABLE `orders` (
   `id_order` int(11) NOT NULL,
   `time_order` date NOT NULL,
   `adress_order` varchar(50) NOT NULL
@@ -81,6 +81,8 @@ ALTER TABLE `order`
 ALTER TABLE `ordered_pizza`
   ADD PRIMARY KEY (`id_orderedpizza`);
 COMMIT;
+
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

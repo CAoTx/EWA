@@ -32,7 +32,7 @@
         <a href="client-baker/baker.php">Baker</a>
       </li>
       <li>
-        <a href="client-deliverer/delivererView.html">Deliverer</a>
+        <a href="client-deliverer/deliverer.php">Deliverer</a>
       </li>
     </ul>
   </nav>
