@@ -221,7 +221,7 @@ EOT;
 
             echo <<<EOT
             <div class="menuPizzaItem">
-                <a onclick="addPzza($pizzaID)" href='#' id="getName($pizzaID).value">
+                <a onclick="addPzza('$pizzaName', $pizzaPrice)" id="$pizzaName">
                     <img src="../assets/pizza.png" width="80" height="80" alt="Pizza Img">
                     <span class="name">$pizzaName</span>
                     <span class="price">$pizzaPrice</span>

@@ -7,7 +7,7 @@ var form = document.getElementById("pizzaOrderList");
 
 
 
-function addPzza(pizzanr) {
+function addPzza(pizzaname, pizzapreis) {
 	"use strict";
 
     if(cart.innerHTML.trim().localeCompare("<option>Warenkorb</option>") == 0) {
@@ -17,18 +17,18 @@ function addPzza(pizzanr) {
 	}
 	
 	var pizza = document.createElement("option");
-	pizza.innerHTML = getName(pizzanr).value;
+	pizza.innerHTML = pizzaname;//getName(pizzanr).value;
 	
 
 	var hiddenInput = document.createElement("input");
 	hiddenInput.setAttribute("type", "hidden");
 	hiddenInput.setAttribute("name", "pizzaOrder[" + cart.children.length / 2 + "]");
-	hiddenInput.setAttribute("value", getName(pizzanr).value);
+	hiddenInput.setAttribute("value", pizzaname);//getName(pizzanr).value);
 
 	cart.appendChild(pizza);
 	cart.appendChild(hiddenInput);
 	
-	_PriceField(getPrice(pizzanr).value);
+	_PriceField(pizzapreis);//getPrice(pizzanr).value);
 
 	
 	
@@ -47,9 +47,8 @@ function removeSelectedPizza() {
 	var toDelete = [];
 		
 	for ( var i = 0, len = cart.options.length; i < len; i = i + 2 ) {
-        var opt = cart.options[i]; //
+        var opt = cart.options[i];
 
-		
         if ( opt.selected ) {
 			
 			toDelete.push(i);
@@ -183,7 +182,7 @@ function createSpeisekarte() {
 	}
 }
 
-createSpeisekarte();
+//createSpeisekarte();
 
 document.getElementById("orderButton").disabled = true;
 document.getElementById("delete-selected").disabled = true;
