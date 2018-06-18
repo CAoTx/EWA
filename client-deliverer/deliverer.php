@@ -113,7 +113,7 @@ EOT;
                     </section>
 EOT;
 
-        $this->generatePageFooter();
+        $this->generatePageFooter("delivererView");
     }
     protected function processReceivedData() 
     {

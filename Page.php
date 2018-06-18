@@ -23,15 +23,11 @@ abstract class Page
     
     protected function __destruct()    
     {
-        // to do: close database
         $this->_database->close();
     }
     
     protected function generatePageHeader($headline = "") 
     {
-
-        // to do: output common beginning of HTML code 
-        // including the individual headline
         $headline = htmlspecialchars($headline);
         header("Content-type: text/html; charset=UTF-8");
         
@@ -54,13 +50,14 @@ EOT;
 
     protected function generatePageFooter($headline = "") 
     {
-        // to do: output common end of HTML code
+        if ($headline != "delivererView" && $headline != "bakerView"){
         echo <<<EOT
                 </div>
                 <script src=$headline.js type='text/javascript'></script>
             </body>
         </html>
 EOT;
+        }
     }
     
     protected function processReceivedData() 
