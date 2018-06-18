@@ -53,10 +53,13 @@ function removeSelectedPizza() {
 
         if ( opt.selected ) {
 			
+			console.log(i + " is selected");
+
 			toDelete.push(i * 2);
         }
 	}
 	
+	console.log(toDelete);
 
 	for(var i = toDelete.length - 1; i >= 0; i = i -2) {
 
@@ -69,7 +72,7 @@ function removeSelectedPizza() {
 		_PriceField(preisdiff);
 		*/
 
-		_PriceField(-1 * cart.removeChild(cart.children[ toDelete[ i ] ]));
+		_PriceField(-1 * cart.removeChild(cart.children[ toDelete[ i ] ]).getAttribute("price"));
 		cart.removeChild(cart.children[ toDelete[ i ] ]);
 	}
 
