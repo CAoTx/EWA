@@ -252,7 +252,7 @@ EOT;
         
 EOT;
 
-        $this->generatePageFooter();
+        $this->generatePageFooter("orderView");
     }
     
     /**

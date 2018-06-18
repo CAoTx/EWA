@@ -42,7 +42,6 @@ abstract class Page
             <head>
                 <title>$headline</title>
                 <meta charset='utf-8'>
-                <!--<script src=$headline.js type='text/javascript'> </script>-->
                 <link rel='stylesheet' type='text/css' href=$headline.css>
                 <link rel='stylesheet' type='text/css' href='../mainDivStyle.css'>
             </head>
@@ -53,10 +52,12 @@ EOT;
 
     }
 
-    protected function generatePageFooter() 
+    protected function generatePageFooter($headline = "") 
     {
         // to do: output common end of HTML code
-        echo "</div><script src=orderView.js type='text/javascript'> </script></body></html>";
+        echo <<<EOT
+        "</div><script src=$headline.js type='text/javascript'> </script></body></html>";
+EOT;
     }
     
     protected function processReceivedData() 
