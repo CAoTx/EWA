@@ -26,7 +26,7 @@ abstract class Page
         $this->_database->close();
     }
     
-    protected function generatePageHeader($headline = "") 
+    protected function generatePageHeader($headline = "", $refresh = true) 
     {
         $headline = htmlspecialchars($headline);
         header("Content-type: text/html; charset=UTF-8");
@@ -38,6 +38,9 @@ abstract class Page
             <head>
                 <title>$headline</title>
                 <meta charset='utf-8'>
+EOT;
+                if ($refresh) echo '<meta http-equiv="refresh" content="5">';
+                echo <<<EOT
                 <link rel='stylesheet' type='text/css' href=$headline.css>
                 <link rel='stylesheet' type='text/css' href='../mainDivStyle.css'>
             </head>

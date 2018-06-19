@@ -89,7 +89,7 @@ class Order extends Page
     protected function generateView() 
     {
         $this->getViewData();
-        $this->generatePageHeader('orderView');
+        $this->generatePageHeader('orderView', false);
         // to do: call generateView() for all members
         // to do: output view of this page
 
