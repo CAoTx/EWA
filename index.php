@@ -4,6 +4,7 @@
 <head>
   <title>Index</title>
   <meta charset="utf-8">
+  <meta http-equiv="refresh" content="5">
   <link rel="stylesheet" type="text/css" href="mainDivStyle.css">
 </head>
 
