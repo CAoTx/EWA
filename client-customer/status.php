@@ -94,7 +94,6 @@ class Status extends Page
         <header>
             <h1>Order Status</h1>
         </header>
-        <form class="order" action="http://www.fbi.h-da.de/cgi-bin/Echo.pl" method="POST">   
             <table>
               <thead>
                 <tr>
@@ -108,6 +107,7 @@ class Status extends Page
               <tbody>
 EOT;
         while($row = $this->orders->fetch_assoc()) {
+            if($row['status'] > 4) continue;
             $pizzaname = $row['name_pizza'];
             
             $check1 = "";
@@ -126,7 +126,7 @@ EOT;
                 $check3 = "checked";
                 break;
                 case "4":
-                $check3 = "checked";
+                $check4 = "checked";
                 break;
                 default:
                 break;
@@ -147,9 +147,8 @@ EOT;
             </table>
             <ul>
                 <li><a>U Want Some More ?! </a>
-                <a href="orderView.html"> Order additional Pizzas</a></li>
+                <a href="order.php"> Order additional Pizzas</a></li>
              </ul>
-             </form>
 EOT;
 
 

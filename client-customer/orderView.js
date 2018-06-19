@@ -23,7 +23,8 @@ function addPzza(pizzaname, pizzapreis) {
 
 	var hiddenInput = document.createElement("input");
 	hiddenInput.setAttribute("type", "hidden");
-	hiddenInput.setAttribute("name", "pizzaOrder[" + cart.children.length / 2 + "]");
+	hiddenInput.setAttribute("name", "pizzaOrder[]");
+	// hiddenInput.setAttribute("name", "pizzaOrder[" + cart.children.length / 2 + "]");
 	hiddenInput.setAttribute("value", pizzaname);//getName(pizzanr).value);
 
 	cart.appendChild(pizza);

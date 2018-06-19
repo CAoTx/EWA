@@ -51,7 +51,6 @@ class Order extends Page
 
 
         header("Content-type: text/html; charset=UTF-8");
-        
     }
     
     /**
@@ -127,13 +126,14 @@ EOT;
 
         echo <<<EOT
         <section id="bestellbuttons" class="orderButtons">
-        <form action="https://www.fbi.h-da.de/cgi-bin/Echo.pl" method="POST" id="pizzaOrderList">
+        <form action="order_action.php" method="POST" id="pizzaOrderList">
             <select id="shopping_cart" class="shopping_cart" multiple="" size="10"><option>Warenkorb</option> </select>
             
-            <input type="text" class="block_input" id="adresse" name="adresse" placeholder="Lieferadresse angeben..." required="">
-            <input type="text" class="block_input" id="preis" name="preis" placeholder="0.00 €" readonly="" value="0.00">
+            <input type="text" class="tall_input" id="adresse" name="adresse" placeholder="Lieferadresse angeben..." required="">
+            <input type="text" class="tall_input" id="preis" name="preis" placeholder="0.00 €" readonly="" value="0.00">
+            <br>
+            <button type="button" id="orderButton" onclick="this.form.submit();">Order</button>
             
-            <input type="submit" value="Order" id="orderButton" disabled="">
             <button type="reset" id="delete-all" onclick="removeAllPizzas()">Delete all</button>
             <button type="button" id="delete-selected" onclick="removeSelectedPizza()" disabled="">Delete selected</button>
           </form>

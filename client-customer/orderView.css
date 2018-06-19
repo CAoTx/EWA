@@ -65,28 +65,28 @@ div.menuPizzaItem {
 }
 
 
-.imgPizza {
-    display: inline-block;
+img {
+    display: block;
+    
+    margin-top: 2em;
 }
 
 span.price {
     display: inline-block;
     
     padding: 0.5em;
+    margin-bottom: 2em;
 }
 
 span.name {
     display: inline-block;
+    margin-bottom: 2em;
     
 }
-
-
 
 section {
     display: inline-block;
     width: 100%;
-    /*margin: 2px;*/
-    /*padding: 0.5em; */
 }
 
 h1 {
@@ -123,4 +123,14 @@ table th {
 table td {
     width:5%;
     text-align: center;
+}
+
+button {
+    margin-left: 1em;
+    height: 2em;
+}
+
+
+.tall_input {
+    height: 2em;
 }
