@@ -110,7 +110,7 @@ EOT;
 
             echo <<<EOT
             <div class="menuPizzaItem">
-                <a onclick="addPzza('$pizzaName', $pizzaPrice)" id="$pizzaName">
+                <a onclick="addPzza('$pizzaName', $pizzaPrice)" id="$pizzaName" tabindex="0">
                     <img src="../assets/pizza.png" width="80" height="80" alt="Pizza Img">
                     <span class="name">$pizzaName</span>
                     <span class="price">$pizzaPrice</span>
@@ -129,13 +129,13 @@ EOT;
         <form action="order_action.php" method="POST" id="pizzaOrderList">
             <select id="shopping_cart" class="shopping_cart" multiple="" size="10"><option>Warenkorb</option> </select>
             
-            <input type="text" class="tall_input" id="adresse" name="adresse" placeholder="Lieferadresse angeben..." oninput="enableOrderButton()" required="">
-            <input type="text" class="tall_input" id="preis" name="preis" placeholder="0.00 €" readonly="" value="0.00">
+            <input type="text" class="tall_input" id="adresse" name="adresse" placeholder="Lieferadresse angeben..." oninput="enableOrderButton()" tabindex="0" required="">
+            <input type="text" class="tall_input" id="preis" name="preis" placeholder="0.00 €" readonly="" value="0.00" tabindex="0">
             <br>
-            <button type="button" id="orderButton" onclick="this.form.submit();">Order</button>
+            <button type="button" id="orderButton" onclick="this.form.submit();" tabindex="0">Order</button>
             
-            <button type="reset" id="delete-all" onclick="removeAllPizzas()">Delete all</button>
-            <button type="button" id="delete-selected" onclick="removeSelectedPizza()" disabled="">Delete selected</button>
+            <button type="reset" id="delete-all" onclick="removeAllPizzas()" tabindex="0">Delete all</button>
+            <button type="button" id="delete-selected" onclick="removeSelectedPizza()" disabled="" tabindex="0">Delete selected</button>
           </form>
 
         </section>
