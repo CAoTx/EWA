@@ -29,5 +29,5 @@ foreach ($orderedPizzas as $orderedPizza) {
 }
 
 
-// header("location: status.php");
+header("location: status.php");
 ?>
