@@ -20,9 +20,14 @@ body {
 article {
     display: inline-block;
     width: 15em;
+    min-height: 10em;
     border-style: solid;
     margin: 2px;
     padding: 0.5em;
+}
+
+section {
+    min-height: 40em;
 }
 
 h1 {

@@ -187,11 +187,10 @@ EOT;
 
                    echo <<<EOT
                     </p>
-                    <p>
+                    
 EOT;
                    $dummy->printData();
                 echo <<<EOT
-                </p>
 
                 <form action='action.php' method='POST'>
                 <input type='hidden' value=$ordID name='bestellID'>
