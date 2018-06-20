@@ -40,7 +40,7 @@ abstract class Page
                 <meta charset='utf-8'>
 EOT;
                 if ($refresh) {
-                // echo '<meta http-equiv="refresh" content="5">';
+                 echo '<meta http-equiv="refresh" content="5">';
                 }
                 echo <<<EOT
                 <link rel='stylesheet' type='text/css' href=$headline.css>
