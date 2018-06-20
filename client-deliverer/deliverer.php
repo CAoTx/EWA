@@ -2,10 +2,73 @@
 
 require_once '../Page.php';
 
+class Output {
+
+    public $price;
+    public $status;
+    public $adress;
+    public $names;
+    public $orderID;
+
+    public function __construct($id, $adrs) 
+    {
+        $this->names = []; 
+        $this->status = 3; 
+        $this->price = -1;
+        $this->orderID = $id;
+        $this->adress = $adrs;
+    }
+
+    public function __destruct() 
+    {
+
+    }
+
+    public function _addPizza($name, $prc, $sts){
+        if($sts < 3 || $sts > 4){
+            $this->status = -1;
+        }
+        else if ($sts == 3){$this->status = 3;}
+        else if ($sts == 4){$this->status = 4;}
+
+        array_push($this->names, $name);
+
+        $this->price= $this->price + $prc;
+    }
+
+    public function printNames(){
+        $str = '';
+        foreach($this->names as $name) {
+        $str = $str.$name.', ';
+    }
+    echo <<<EOT
+    $str
+EOT;
+}
+
+    public function printData(){
+        echo <<<EOT
+        <p>OrderId: $this->orderID</p>
+        <p>Price: $this->price €</p>
+        <p>$this->adress</p>
+EOT;
+    }
+
+    public function getStatus(){
+        return $this->status;
+    }
+}
+
+
+
+//////////// ACTUAL DELIVERER CLASS ///////////////
+
+
 class Deliverer extends Page
 {
    var $orders;
    var $restFlag;
+   var $mapOrders;
 
     protected function __construct() 
     {
@@ -13,6 +76,7 @@ class Deliverer extends Page
         
         $this->orders = [];   
         $this->restFlag = false;
+        $this->mapOrders = [];
     }
 
     protected function __destruct() 
@@ -22,27 +86,45 @@ class Deliverer extends Page
 
     protected function getViewData()
     {
+      
         $this->orders = $this->_database->query(
-            "SELECT * FROM ordered_pizza INNER JOIN orders INNER JOIN menu WHERE ordered_pizza.id_bestellung = orders.id_order AND ordered_pizza.status > 2 AND ordered_pizza.status < 5 AND ordered_pizza.name_pizza = menu.name_pizza"
+            "SELECT * FROM ordered_pizza INNER JOIN orders INNER JOIN menu 
+            WHERE ordered_pizza.id_bestellung = orders.id_order 
+            AND ordered_pizza.name_pizza = menu.name_pizza 
+         /*   AND (ordered_pizza.status = 3 OR ordered_pizza.status = 4) */
+            ORDER BY ordered_pizza.id_bestellung ASC"
         );
         if (!$this->orders->num_rows > 0) {
             $this->restFlag = true;
+        }
+
+        $arr = $this->orders->fetch_all(MYSQLI_ASSOC);
+        $oldid = 'INIT';
+        $mapPtr = 0; 
+
+/////////////Forloop to check if a whole order is done (All pizzas done)////////////////////
+        for($idx = 0; $idx < count($arr); $idx++){
+            
+                if($oldid != $arr[$idx]['id_bestellung']){
+                    $newTyp = new Output($arr[$idx]['id_bestellung'],$arr[$idx]['adress_order']);
+                    $newTyp->_addPizza($arr[$idx]['name_pizza'], $arr[$idx]['price_pizza'], $arr[$idx]['status']);
+                    $mapPtr = array_push($this->mapOrders, $newTyp);
+                }
+                else{
+                    $this->mapOrders[$mapPtr - 1]->_addPizza($arr[$idx]['name_pizza'], $arr[$idx]['price_pizza'], $arr[$idx]['status']);
+                }
+
+                $oldid = $arr[$idx]['id_bestellung'];
+
         }
     }
     
     protected function generateView() 
     {
-        $pizzaname;
-        $pizzaID;
-        $orderID;
-        $status;
-        $adress;
-        $price;
-
-       $check1;
-       $check2;
-       $check3;
-
+        $check1;
+        $check2;
+        $check3;
+        
         $this->getViewData();
         $this->generatePageHeader('delivererView');
 
@@ -65,71 +147,90 @@ EOT;
             echo <<<EOT
                         <section> 
 EOT;
-            while($row = $this->orders->fetch_assoc()){
-                $pizzaname = $row['name_pizza'];
-                $pizzaID = $row['id_orderedpizza'];
-                $orderID = $row['id_bestellung'];
-                $status = $row['status'];
-                $adress = $row['adress_order'];
-                $price = $row['price_pizza'];
+
+            for ($index = 0; $index < count($this->mapOrders); $index++){
+
                 
+                $dummy = $this->mapOrders[$index];
+                $attributes = get_object_vars($dummy);
+                $ordID = $attributes['orderID'];
+                $adrs = $attributes['adress'];
+                $stat = $attributes['status'];
+                $prc = $attributes['price'];
+                $nms = $attributes['names'];
+                
+ 
+                if($stat == 3 || $stat == 4){
+                switch($stat){
+                 case "3": 
+                 $check1 = "checked=''"; $check2 = ""; $check3 = ""; break;
+                case "4": 
+                 $check1 = ""; $check2 = "checked=''"; $check3 = ""; break;
+                 case "5": 
+                 $check1 = ""; $check2 = ""; $check3 = "checked=''"; break;
+                  default : 
+                  $check1 = ""; $check2 = ""; $check3 = "";
+                echo "<script>console.log('ID:' + $ordID + 'Value:' + $stat + ', case: default');</script>";
+                 break;
+                   }
 
 
-                switch($status){
-                    case "3": 
-                    $check1 = "checked=''"; $check2 = ""; $check3 = ""; break;
-                    case "4": 
-                    $check1 = ""; $check2 = "checked=''"; $check3 = ""; break;
-                    case "5": 
-                    $check1 = ""; $check2 = ""; $check3 = "checked=''"; break;
-                    default : 
-                    $check1 = ""; $check2 = ""; $check3 = "";
-                    echo "<script>console.log('ID:' + $orderID + ', case: default');</script>";
-                    break;
-                }
+
+
+                   //PRINTING
 
                 echo <<<EOT
-                    <article> 
-                    <p>$pizzaname , $price €</p>
-                    <p>PizzaID: $pizzaID</p>
-                    <p>OrderID: $orderID</p>
-                    <p>$adress</p>
+                <article>
+                <p>
+EOT;
+                   $dummy->printNames();
 
-                    <form action='action.php' method='POST'>
-                    <input type='hidden' value=$pizzaID name='pizzaID'>
-                    <input type='hidden' value=$orderID name='bestellID'>
+                   echo <<<EOT
+                    </p>
+                    <p>
+EOT;
+                   $dummy->printData();
+                echo <<<EOT
+                </p>
 
-                    <label class='radioLabel'>Ready
-                    <input type='radio' value='3' onclick='this.form.submit();' name='radioinput' $check1   >
-                    <span class='radioSpan'></span>
-                    </label>
+                <form action='action.php' method='POST'>
+                <input type='hidden' value=$ordID name='bestellID'>
 
-                    <label class='radioLabel'>Fly
-                    <input type='radio' value='4' onclick='this.form.submit();' name='radioinput' $check2  >
-                    <span class='radioSpan'></span>
-                    </label>
+                <label class='radioLabel'>Ready
+                <input type='radio' value='3' onclick='this.form.submit();' name='radioinput' $check1   >
+                <span class='radioSpan'></span>
+                </label>
 
-                    <label class='radioLabel'>Done
-                    <input type='radio' value='5' onclick='this.form.submit();' name='radioinput' $check3  >
-                    <span class='radioSpan'></span>
-                    </label>
+                <label class='radioLabel'>Fly
+                <input type='radio' value='4' onclick='this.form.submit();' name='radioinput' $check2  >
+                <span class='radioSpan'></span>
+                </label>
 
-                    </form>
+                <label class='radioLabel'>Done
+                <input type='radio' value='5' onclick='this.form.submit();' name='radioinput' $check3  >
+                <span class='radioSpan'></span>
+                </label>
 
-                    </article>
+                </form>
+                </article>
 EOT;
             }
-        echo <<<EOT
+        }
+         echo <<<EOT
                     </section>
 EOT;
-
         $this->generatePageFooter("delivererView");
     }
+
+
+
     protected function processReceivedData() 
     {
         parent::processReceivedData();
         // to do: call processReceivedData() for all members
     }
+
+
 
     public static function main() 
     {
@@ -144,6 +245,7 @@ EOT;
         }
     }
 }
+
 Deliverer::main();
 
 // Zend standard does not like closing php-tag!

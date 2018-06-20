@@ -82,6 +82,7 @@ EOT;
                     <article> 
                     <p>$pizzaname</p>
                     <p>PizzaID: $pizzaID</p>
+                    <p>OrderID: $bestellID</p>
 
                     <form action='action.php' method='POST'>
                     <input type='hidden' value=$pizzaID name='pizzaID'>
