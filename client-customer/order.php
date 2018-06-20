@@ -129,7 +129,7 @@ EOT;
         <form action="order_action.php" method="POST" id="pizzaOrderList">
             <select id="shopping_cart" class="shopping_cart" multiple="" size="10"><option>Warenkorb</option> </select>
             
-            <input type="text" class="tall_input" id="adresse" name="adresse" placeholder="Lieferadresse angeben..." required="">
+            <input type="text" class="tall_input" id="adresse" name="adresse" placeholder="Lieferadresse angeben..." oninput="enableOrderButton()" required="">
             <input type="text" class="tall_input" id="preis" name="preis" placeholder="0.00 €" readonly="" value="0.00">
             <br>
             <button type="button" id="orderButton" onclick="this.form.submit();">Order</button>
