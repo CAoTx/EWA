@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2018 at 05:39 AM
+-- Generation Time: Jun 20, 2018 at 09:07 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -64,11 +64,7 @@ CREATE TABLE `ordered_pizza` (
 --
 
 INSERT INTO `ordered_pizza` (`id_orderedpizza`, `id_bestellung`, `name_pizza`, `status`) VALUES
-(1, 9, 'Margharita', 5),
-(12, 10, 'Margharita', 5),
-(13, 10, 'Margharita', 5),
-(14, 10, 'Salami', 5),
-(15, 10, 'Salami', 5);
+(1, 1, 'Margharita', 5);
 
 -- --------------------------------------------------------
 
@@ -78,16 +74,16 @@ INSERT INTO `ordered_pizza` (`id_orderedpizza`, `id_bestellung`, `name_pizza`, `
 
 CREATE TABLE `orders` (
   `id_order` int(11) NOT NULL,
-  `adress_order` varchar(50) NOT NULL
+  `adress_order` varchar(50) NOT NULL,
+  `id_session` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id_order`, `adress_order`) VALUES
-(1, 'Musterstr 1'),
-(10, 'adresse1');
+INSERT INTO `orders` (`id_order`, `adress_order`, `id_session`) VALUES
+(1, 'Musterstr 1', '1a');
 
 --
 -- Indexes for dumped tables
@@ -125,13 +121,13 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `ordered_pizza`
 --
 ALTER TABLE `ordered_pizza`
-  MODIFY `id_orderedpizza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_orderedpizza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

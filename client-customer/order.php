@@ -37,6 +37,7 @@ class Order extends Page
     // representing substructures/blocks
     var $pizzas;
 
+
     /**
      * Instantiates members (to be defined above)->   
      * Calls the constructor of the parent i->e-> page class->
@@ -48,7 +49,6 @@ class Order extends Page
     {
         parent::__construct();
         // to do: instantiate members representing substructures/blocks
-
 
         header("Content-type: text/html; charset=UTF-8");
     }
