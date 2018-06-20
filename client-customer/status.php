@@ -15,7 +15,6 @@
  * @Release  1.2 
  * @link     http://www.fbi.h-da.de 
  */
-
 // to do: change name 'Status' throughout this file
 require_once '../Page.php';
 
@@ -70,8 +69,10 @@ class Status extends Page
      */
     protected function getViewData()
     {
+        $sqlstmt = "SELECT * FROM ordered_pizza INNER JOIN orders WHERE ordered_pizza.id_bestellung = orders.id_order AND orders.id_session = '" . session_id() . "'";
         // to do: fetch data for this view from the database
-        $this->orders = $this->_database->query("select * from ordered_pizza");
+        $this->orders = $this->_database->query($sqlstmt);
+
     }
     
     /**
@@ -106,42 +107,44 @@ class Status extends Page
               </thead>
               <tbody>
 EOT;
-        while($row = $this->orders->fetch_assoc()) {
-            if($row['status'] > 4) continue;
-            $pizzaname = $row['name_pizza'];
-            
-            $check1 = "";
-            $check2 = "";
-            $check3 = "";
-            $check4 = "";
+        
+            while($row = $this->orders->fetch_assoc()) {
+                if($row['status'] > 4) continue;
+                
+                $pizzaname = $row['name_pizza'];
+                
+                $check1 = "";
+                $check2 = "";
+                $check3 = "";
+                $check4 = "";
 
-            switch($row['status']) {
-                case "1":
-                $check1 = "checked";
-                break;
-                case "2":
-                $check2 = "checked";
-                break;
-                case "3":
-                $check3 = "checked";
-                break;
-                case "4":
-                $check4 = "checked";
-                break;
-                default:
-                break;
-            }
+                switch($row['status']) {
+                    case "1":
+                    $check1 = "checked";
+                    break;
+                    case "2":
+                    $check2 = "checked";
+                    break;
+                    case "3":
+                    $check3 = "checked";
+                    break;
+                    case "4":
+                    $check4 = "checked";
+                    break;
+                    default:
+                    break;
+                }
 
-            echo <<<EOT
-            <tr>
-                <td>$pizzaname</td>
-                <td><input type="radio" disabled="" $check1></td>
-                <td><input type="radio" disabled="" $check2></td>
-                <td><input type="radio" disabled="" $check3></td>
-                <td><input type="radio" disabled="" $check4></td>
-            </tr>
+                echo <<<EOT
+                <tr>
+                    <td>$pizzaname</td>
+                    <td><input type="radio" disabled="" $check1></td>
+                    <td><input type="radio" disabled="" $check2></td>
+                    <td><input type="radio" disabled="" $check3></td>
+                    <td><input type="radio" disabled="" $check4></td>
+                </tr>
 EOT;
-        }
+                }
             echo <<<EOT
             </tbody>
             </table>

@@ -3,8 +3,16 @@
 var cart = document.getElementById("shopping_cart");
 var price = document.getElementById("preis");
 var form = document.getElementById("pizzaOrderList");
+var adresse = document.getElementById("adresse");
 
 
+function enableOrderButton() {
+	"use strict";
+
+	if(cart.children.length > 0 && adresse.value != null && adresse.value != "") {
+		document.getElementById("orderButton").disabled = false;
+	}
+}
 
 
 function addPzza(pizzaname, pizzapreis) {
@@ -36,8 +44,11 @@ function addPzza(pizzaname, pizzapreis) {
 	
 	if(cart.children.length > 0) {
 		
-		document.getElementById("orderButton").disabled = false;
 		document.getElementById("delete-selected").disabled = false;
+		//if adress isnt empty enable order button
+		if(adresse.value != null && adresse.value != "") {
+			document.getElementById("orderButton").disabled = false;
+		}
 	}
 }
 

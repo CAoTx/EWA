@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $mysqli = new MySQLi('localhost', 'root', '', 'ewa');
 // check connection to database
 if (mysqli_connect_errno())
@@ -11,12 +13,14 @@ throw new Exception("Fehler beim Laden des Zeichensatzes UTF-8: ".$mysqli->error
 
 //lieferadresse
 $adresse = $_POST['adresse'];
+$sessionID = session_id();
 
 //add new order (with autoincrement ID)
-$mysqli->query("INSERT INTO orders (id_order, adress_order) VALUES (NULL, '$adresse')");
+$mysqli->query("INSERT INTO orders (id_order, adress_order, id_session) VALUES (NULL, '$adresse', '$sessionID')");
 
 //get last orders.id_order
 $lastOrderID = $mysqli->query("SELECT id_order FROM orders ORDER BY id_order DESC")->fetch_assoc()['id_order'];
+
 
 //add new ordered pizzas
 $orderedPizzas = $_POST['pizzaOrder'];
