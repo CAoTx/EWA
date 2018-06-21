@@ -9,7 +9,7 @@ var adresse = document.getElementById("adresse");
 function enableOrderButton() {
 	"use strict";
 
-	if (cart.children.length > 0 && adresse.value != null && adresse.value != "") {
+	if (cart.children.length > 0 && adresse.value != null && adresse.value != "" && cart.innerHTML.trim().localeCompare("<option>Warenkorb</option>") != 0) {
 		document.getElementById("orderButton").disabled = false;
 	}
 	else {
