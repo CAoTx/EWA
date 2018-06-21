@@ -21,7 +21,6 @@ class Output {
 
     public function __destruct() 
     {
-
     }
 
     public function _addPizza($name, $prc, $sts){
@@ -33,7 +32,7 @@ class Output {
 
         array_push($this->names, $name);
 
-        $this->price= $this->price + $prc;
+        $this->price = $this->price + $prc;
     }
 
     public function printNames(){
@@ -91,7 +90,6 @@ class Deliverer extends Page
             "SELECT * FROM ordered_pizza INNER JOIN orders INNER JOIN menu 
             WHERE ordered_pizza.id_bestellung = orders.id_order 
             AND ordered_pizza.name_pizza = menu.name_pizza 
-         /*   AND (ordered_pizza.status = 3 OR ordered_pizza.status = 4) */
             ORDER BY ordered_pizza.id_bestellung ASC"
         );
         if (!$this->orders->num_rows > 0) {
@@ -145,12 +143,12 @@ EOT;
 EOT;
                 }
             echo <<<EOT
-                        <section> 
+                    <section> 
 EOT;
 
             for ($index = 0; $index < count($this->mapOrders); $index++){
 
-                
+                //SET OUTPUTDATA
                 $dummy = $this->mapOrders[$index];
                 $attributes = get_object_vars($dummy);
                 $ordID = $attributes['orderID'];
@@ -175,9 +173,7 @@ EOT;
                    }
 
 
-
-
-                   //PRINTING
+                //PRINTING
 
                 echo <<<EOT
                 <article>
@@ -186,13 +182,13 @@ EOT;
                    $dummy->printNames();
 
                    echo <<<EOT
-                    </p>
+                </p>
                     
 EOT;
                    $dummy->printData();
                 echo <<<EOT
 
-                <form action='action.php' method='POST'>
+                <form action='action.php' method='POST' name="tescht">
                 <input type='hidden' value=$ordID name='bestellID'>
 
                 <label class='radioLabel'>Ready
@@ -216,7 +212,7 @@ EOT;
             }
         }
          echo <<<EOT
-                    </section>
+            </section>
 EOT;
         $this->generatePageFooter("delivererView");
     }

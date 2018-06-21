@@ -24,6 +24,7 @@ article {
     margin: 2px;
     padding: 0.5em;
     height: 200px;
+    float: left;
 }
 
 section {
