@@ -43,7 +43,7 @@ INSERT INTO `menu` (`id_pizza`, `name_pizza`, `price_pizza`) VALUES
 (2, 'Salami', 6),
 (3, 'Pepperoni', 6.37),
 (4, 'Tuna', 6.19),
-(5, 'Quattro_Fromaggi', 6.56),
+(5, 'Spinat', 6.56),
 (6, 'Veggi', 6.42);
 
 -- --------------------------------------------------------

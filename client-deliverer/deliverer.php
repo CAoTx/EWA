@@ -14,7 +14,7 @@ class Output {
     {
         $this->names = []; 
         $this->status = 3; 
-        $this->price = -1;
+        $this->price = 0;
         $this->orderID = $id;
         $this->adress = $adrs;
     }
@@ -24,11 +24,12 @@ class Output {
     }
 
     public function _addPizza($name, $prc, $sts){
+        
         if($sts < 3 || $sts > 4){
             $this->status = -1;
         }
-        else if ($sts == 3){$this->status = 3;}
-        else if ($sts == 4){$this->status = 4;}
+        else if ($sts == 3 && $this->status > 2){$this->status = 3;}
+        else if ($sts == 4 && $this->status > 3){$this->status = 4;}
 
         array_push($this->names, $name);
 
@@ -107,13 +108,11 @@ class Deliverer extends Page
                     $newTyp = new Output($arr[$idx]['id_bestellung'],$arr[$idx]['adress_order']);
                     $newTyp->_addPizza($arr[$idx]['name_pizza'], $arr[$idx]['price_pizza'], $arr[$idx]['status']);
                     $mapPtr = array_push($this->mapOrders, $newTyp);
+                    $oldid = $arr[$idx]['id_bestellung'];
                 }
                 else{
                     $this->mapOrders[$mapPtr - 1]->_addPizza($arr[$idx]['name_pizza'], $arr[$idx]['price_pizza'], $arr[$idx]['status']);
                 }
-
-                $oldid = $arr[$idx]['id_bestellung'];
-
         }
     }
     
@@ -157,6 +156,9 @@ EOT;
                 $prc = $attributes['price'];
                 $nms = $attributes['names'];
                 
+                echo <<<EOT
+                <script>console.log($stat + ", " + $ordID)</script>
+EOT;
  
                 if($stat == 3 || $stat == 4){
                 switch($stat){
