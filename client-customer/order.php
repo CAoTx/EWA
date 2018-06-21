@@ -105,7 +105,7 @@ EOT;
         //der über alle Pizzen im Menu iteriert
         while($row = $this->pizzas->fetch_assoc()) {
             $pizzaID = $row['id_pizza'];
-            $pizzaName = $row['name_pizza'];
+            $pizzaName = htmlspecialchars($row['name_pizza']);
             $pizzaPrice = $row['price_pizza'];
 
             echo <<<EOT

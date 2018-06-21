@@ -12,7 +12,7 @@ throw new Exception("Fehler beim Laden des Zeichensatzes UTF-8: ".$mysqli->error
 
 
 //lieferadresse
-$adresse = $_POST['adresse'];
+$adresse = htmlspecialchars($_POST['adresse']);
 $sessionID = session_id();
 
 //add new order (with autoincrement ID)

@@ -17,6 +17,15 @@ function enableOrderButton() {
 	}
 }
 
+function escapeHtml(unsafe) {
+    return unsafe
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
+ }
+
 
 function addPzza(pizzaname, pizzapreis) {
 	"use strict";
@@ -29,14 +38,14 @@ function addPzza(pizzaname, pizzapreis) {
 
 	var pizza = document.createElement("option");
 	pizza.setAttribute("price", pizzapreis);
-	pizza.innerHTML = pizzaname;//getName(pizzanr).value;
+	pizza.innerHTML = escapeHtml(pizzaname);//getName(pizzanr).value;
 
 
 	var hiddenInput = document.createElement("input");
 	hiddenInput.setAttribute("type", "hidden");
 	hiddenInput.setAttribute("name", "pizzaOrder[]");
 	// hiddenInput.setAttribute("name", "pizzaOrder[" + cart.children.length / 2 + "]");
-	hiddenInput.setAttribute("value", pizzaname);//getName(pizzanr).value);
+	hiddenInput.setAttribute("value", escapeHtml(pizzaname));//getName(pizzanr).value);
 
 	cart.appendChild(pizza);
 	cart.appendChild(hiddenInput);
